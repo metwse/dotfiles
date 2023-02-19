@@ -12,6 +12,7 @@ sudo sh -c "echo 'deb https://baltocdn.com/i3-window-manager/i3/i3-autobuild/ al
 sudo apt update
 
 sudo apt install picom i3 maim neovim xclip feh git tmux golang nodejs wget rofi i3blocks
+sudo npm install -g tree-sitter-cli
 
 
 # fonts
@@ -30,8 +31,8 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 cp -r ./.config/* ~/.config/
 cp ./.tmux.conf ~/
 cp ./.bashrc ~/
-git clone https://github.com/vivien/i3blocks-contrib ~/.config/i3blocks/
-mv ~/.config/i3blocks/i3blocks-contrib ~/.config/i3blocks/scripts
+
+git clone https://github.com/vivien/i3blocks-contrib ~/.config/i3blocks/scripts
 
 mkdir -p ~/Pictures
 cp ./wallpaper.jpg ~/Pictures/
