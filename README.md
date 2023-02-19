@@ -9,5 +9,16 @@ sudo sh -c "echo 'deb https://baltocdn.com/i3-window-manager/i3/i3-autobuild/ al
 
 sudo apt update
 
-sudo apt install picom i3 maim nvim xdotol xclip feh git
+sudo apt install picom i3 maim nvim xdotol xclip feh git tmux
+
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+cp -r ./.config/* ~/.config/
+cp ./.tmux.conf ~/
+cp ./.bashrc ~/
+
+mkdir -p ~/Pictures
+cp ./wallpaper.jpg ~/Pictures/
+cp ./screensaver.png ~/Pictures/
 ```
