@@ -31,7 +31,7 @@ cp -r ./.config/* ~/.config/
 cp ./.tmux.conf ~/
 cp ./.bashrc ~/
 git clone https://github.com/vivien/i3blocks-contrib ~/.config/i3blocks/
-mv -rf ~/.config/i3blocks/i3blocks-contrib ~/.config/i3blocks/scripts
+mv ~/.config/i3blocks/i3blocks-contrib ~/.config/i3blocks/scripts
 
 mkdir -p ~/Pictures
 cp ./wallpaper.jpg ~/Pictures/
