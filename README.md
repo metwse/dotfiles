@@ -13,7 +13,12 @@ sudo sh -c "echo 'deb https://baltocdn.com/i3-window-manager/i3/i3-autobuild/ al
 
 sudo apt update
 
-sudo apt install picom i3 maim neovim xclip feh git tmux
+sudo apt install picom i3 maim neovim xclip feh git tmux golang nodejs wget
+
+wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
+mkdir -p ~/.fonts/ && mv PowerlineSymbols.otf ~/.fonts/
+fc-cache -vf ~/.fonts
+mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 
 git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
