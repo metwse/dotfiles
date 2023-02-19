@@ -15,11 +15,12 @@ sudo apt install picom i3 maim neovim xclip feh git tmux golang nodejs wget
 
 
 # fonts
-wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
-mkdir -p ~/.fonts/ && mv PowerlineSymbols.otf ~/.fonts/
+wget https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/NerdFontsSymbolsOnly/complete/Symbols-2048-em%20Nerd%20Font%20Complete.ttf 
+mkdir -p ~/.fonts/; mkdir -p ~/.config/fontconfig/conf.d/
+mv PowerlineSymbols.otf ~/.fonts/
+mv 'Symbols-2048-em Nerd Font Complete.ttf' ~/.fonts/
 fc-cache -vf ~/.fonts
-mkdir -p ~/.config/fontconfig/conf.d/ && mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
-./install-nerd.sh NerdFontsSymbolsOnly
+mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 
 
 # config
