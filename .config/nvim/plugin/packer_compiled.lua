@@ -139,6 +139,11 @@ _G.packer_plugins = {
     path = "/home/metw/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-neoclip.lua"] = {
+    loaded = true,
+    path = "/home/metw/.local/share/nvim/site/pack/packer/start/nvim-neoclip.lua",
+    url = "https://github.com/AckslD/nvim-neoclip.lua"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/metw/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
@@ -154,8 +159,13 @@ _G.packer_plugins = {
     path = "/home/metw/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["presence.nvim"] = {
+    loaded = true,
+    path = "/home/metw/.local/share/nvim/site/pack/packer/start/presence.nvim",
+    url = "https://github.com/andweeb/presence.nvim"
+  },
   sonokai = {
-    config = { "\27LJ\2\2Å\1\0\0\4\0\t\0\0266\0\0\0009\0\1\0'\1\2\0B\0\2\0016\0\0\0009\0\3\0009\0\4\0)\1\0\0'\2\5\0004\3\0\0B\0\4\0016\0\0\0009\0\3\0009\0\4\0)\1\0\0'\2\6\0004\3\0\0B\0\4\0016\0\0\0009\0\3\0009\0\4\0)\1\0\0'\2\a\0005\3\b\0B\0\4\1K\0\1\0\1\0\1\afg\f#555555\vFolded\16EndOfBuffer\vNormal\16nvim_set_hl\bapi\26:colorscheme sonokai\n\bcmd\bvim\0" },
+    config = { "\27LJ\2\2”\1\0\0\4\0\a\0\0196\0\0\0009\0\1\0'\1\2\0B\0\2\0016\0\0\0009\0\3\0009\0\4\0)\1\0\0'\2\5\0004\3\0\0B\0\4\0016\0\0\0009\0\3\0009\0\4\0)\1\0\0'\2\6\0004\3\0\0B\0\4\1K\0\1\0\16EndOfBuffer\vNormal\16nvim_set_hl\bapi\26:colorscheme sonokai\n\bcmd\bvim\0" },
     loaded = true,
     path = "/home/metw/.local/share/nvim/site/pack/packer/start/sonokai",
     url = "https://github.com/sainnhe/sonokai"
@@ -190,7 +200,7 @@ _G.packer_plugins = {
 time([[Defining packer_plugins]], false)
 -- Config for: sonokai
 time([[Config for sonokai]], true)
-try_loadstring("\27LJ\2\2Å\1\0\0\4\0\t\0\0266\0\0\0009\0\1\0'\1\2\0B\0\2\0016\0\0\0009\0\3\0009\0\4\0)\1\0\0'\2\5\0004\3\0\0B\0\4\0016\0\0\0009\0\3\0009\0\4\0)\1\0\0'\2\6\0004\3\0\0B\0\4\0016\0\0\0009\0\3\0009\0\4\0)\1\0\0'\2\a\0005\3\b\0B\0\4\1K\0\1\0\1\0\1\afg\f#555555\vFolded\16EndOfBuffer\vNormal\16nvim_set_hl\bapi\26:colorscheme sonokai\n\bcmd\bvim\0", "config", "sonokai")
+try_loadstring("\27LJ\2\2”\1\0\0\4\0\a\0\0196\0\0\0009\0\1\0'\1\2\0B\0\2\0016\0\0\0009\0\3\0009\0\4\0)\1\0\0'\2\5\0004\3\0\0B\0\4\0016\0\0\0009\0\3\0009\0\4\0)\1\0\0'\2\6\0004\3\0\0B\0\4\1K\0\1\0\16EndOfBuffer\vNormal\16nvim_set_hl\bapi\26:colorscheme sonokai\n\bcmd\bvim\0", "config", "sonokai")
 time([[Config for sonokai]], false)
 
 _G._packer.inside_compile = false

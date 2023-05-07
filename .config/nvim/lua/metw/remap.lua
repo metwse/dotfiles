@@ -28,6 +28,13 @@ vim.keymap.set('n', '<leader>j', '<C-w>j')
 vim.keymap.set('n', '<leader>k', '<C-w>k')
 vim.keymap.set('n', '<leader>l', '<C-w>l')
 
+vim.cmd(':ca Q q')
+vim.cmd(':ca W w')
+vim.cmd(':ca WQ wq')
+vim.cmd(':ca Wq wq')
+vim.cmd(':ca wQ wq')
+vim.cmd(':ca X x')
+
 
 
 local builtin = require('telescope.builtin')
@@ -65,3 +72,12 @@ lsp.setup()
 
 
 vim.keymap.set('n', '<leader>g', ':Git\n')
+
+
+
+for c in ('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'):gmatch('.') do
+    vim.keymap.set('n', '<leader>y' .. c, ':Telescope neoclip ' .. c .. '\n')
+end
+vim.keymap.set('n', '<leader>y"', ':Telescope neoclip unnamed\n')
+vim.keymap.set('n', '<leader>y*', ':Telescope neoclip star\n')
+vim.keymap.set('n', '<leader>y+', ':Telescope neoclip plus\n')
