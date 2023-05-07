@@ -121,4 +121,4 @@ alias vi="nvim"
 
 EDITOR=nvim
 
-[ -z "$TMUX"  ] && { tmux attach || exec tmux new-session && exit; }
+[ -z "$TMUX"  ] && { exec tmux new-session && exit; }
