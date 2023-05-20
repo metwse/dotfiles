@@ -11,8 +11,13 @@ sudo sh -c "echo 'deb https://baltocdn.com/i3-window-manager/i3/i3-autobuild/ al
 
 sudo apt update
 
-sudo apt install picom i3 maim neovim xclip feh git tmux golang nodejs wget rofi i3blocks xbacklight
+sudo apt install picom i3 maim neovim xclip feh git tmux golang nodejs wget rofi i3blocks xbacklight surf
 sudo npm install -g tree-sitter-cli
+
+
+# wallpaper engine
+sudo echo "@{HOME}/.config/i3/wallpaper/* r,\n" >> /etc/apparmor.d/local/usr.bin.surf
+sudo apparmor_parser -r /etc/apparmor.d/usr.bin.surf
 
 
 # fonts
