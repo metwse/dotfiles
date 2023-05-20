@@ -23,6 +23,7 @@ bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection c
 
 exec --no-startup-id picom --experimental-backends -b
 exec feh --bg-fill ~/Pictures/wallpaper2.jpg
+exec xwinwrap -ov -fs -- ~/.config/i3/wallpaper.sh WID
 exec --no-startup-id /usr/libexec/gsd-xsettings
 exec setxkbmap -option caps:none
 
