@@ -16,7 +16,7 @@ sudo npm install -g tree-sitter-cli
 
 
 # wallpaper engine
-sudo echo "@{HOME}/.config/i3/wallpaper/* r,\n" >> /etc/apparmor.d/local/usr.bin.surf
+sudo echo "\n@{HOME}/.config/i3/wallpaper/* r,\n" >> /etc/apparmor.d/local/usr.bin.surf
 sudo apparmor_parser -r /etc/apparmor.d/usr.bin.surf
 
 
