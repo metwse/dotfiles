@@ -52,5 +52,5 @@ return require('packer').startup(function(use)
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use { 'andweeb/presence.nvim',  { branch = 'xdg-runtime-dir-fix' } }
 
-    use 'AckslD/nvim-neoclip.lua' 
+    use 'AckslD/nvim-neoclip.lua'
 end)
