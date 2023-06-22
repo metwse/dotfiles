@@ -2,6 +2,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+exec xwinwrap -ov -fs -- ~/.config/i3/wallpaper.sh WID
 exec dunst -config ~/.config/i3/dunst
 exec ~/.config/i3/popup.sh
 exec ~/.config/i3/displayClass.sh
@@ -23,9 +24,9 @@ bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection c
 
 exec --no-startup-id picom --experimental-backends -b
 exec feh --bg-fill ~/Pictures/wallpaper2.jpg
-exec xwinwrap -ov -fs -- ~/.config/i3/wallpaper.sh WID
 exec --no-startup-id /usr/libexec/gsd-xsettings
 exec setxkbmap -option caps:none
+exec --no-startup-id lxpolkit
 
 
 
@@ -303,7 +304,3 @@ for_window [class="Google-chrome"] layout tabbed
 for_window [class="discord"] fullscreen enable
 for_window [class="Nautilus"] floating enable
 for_window [class="Gpick"] floating enable
-for_window [window_role="^pop\-up$"] exec ~/.config/i3/popup.sh
-
-
-
