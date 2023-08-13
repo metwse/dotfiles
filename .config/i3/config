@@ -5,7 +5,10 @@ set $mod Mod4
 exec xwinwrap -ov -fs -- ~/.config/i3/wallpaper.sh WID
 exec dunst -config ~/.config/i3/dunst
 exec ~/.config/i3/popup.sh
+exec ~/.config/i3/numlock.sh
 exec ~/.config/i3/displayClass.sh
+exec greenclip daemon
+exec xset s off
 
 
 
@@ -25,7 +28,7 @@ bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection c
 exec --no-startup-id picom --experimental-backends -b
 exec feh --bg-fill ~/Pictures/wallpaper2.jpg
 exec --no-startup-id /usr/libexec/gsd-xsettings
-exec setxkbmap -option caps:none
+exec_always setxkbmap -layout us -variant ent
 exec --no-startup-id lxpolkit
 
 
@@ -121,8 +124,10 @@ bindsym $mod+Shift+Ctrl+l exec --no-startup-id i3lock -i ~/Pictures/screensaver.
 # suspend
 bindsym $mod+Shift+Ctrl+s exec "i3-nagbar -t warning -m 'You pressed suspend shortcut. Do you really want to suspend i3' -B 'Yes, suspend i3' '~/.config/i3/i3exit suspend'"
 
+popup_during_fullscreen smart
 # start dmenu (a program launcher)
 bindsym $mod+d exec "rofi -combi-modi window#drun -show run -modi combi,keys,drun -show-icons"
+bindcode $mod+61 exec "rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'"
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 # bindsym $mod+d exec --no-startup-id dmenu_run
 bindsym $mod+e exec nautilus
@@ -183,11 +188,11 @@ set $ws9 "9"
 set $ws10 "10"
 
 bindsym KP_End workspace $ws1
-bindsym $mod+KP_End exec i3-sensible-terminal; workspace $ws1
+bindsym Shift+KP_End exec i3-sensible-terminal; workspace $ws1
 bindsym KP_Down workspace $ws2
-bindsym $mod+KP_Down exec google-chrome; workspace $ws2
+bindsym Shift+KP_Down exec google-chrome --enable-features=WebUIDarkMode --force-dark-mode; workspace $ws2
 bindsym KP_Next workspace $ws3
-bindsym $mod+KP_Next exec discord; workspace $ws3
+bindsym Shift+KP_Next exec discord; workspace $ws3
 bindsym KP_Left workspace $ws4
 bindsym KP_Begin workspace $ws5
 bindsym KP_Right workspace $ws6
@@ -296,11 +301,11 @@ assign [class="(i?).*terminal.*"] $ws1
 assign [class="Google-chrome"] $ws2
 assign [class="discord"] $ws3
 
-exec --no-startup-id google-chrome
+exec --no-startup-id google-chrome --enable-features=WebUIDarkMode --force-dark-mode
 exec i3-sensible-terminal
 
-for_window [class="(i?).*terminal.*"] fullscreen enable
-for_window [class="Google-chrome"] layout tabbed 
-for_window [class="discord"] fullscreen enable
+for_window [class="(i?).*terminal.*"] fullscreen enable; border none
+for_window [class="Google-chrome"] layout tabbed; border none
+for_window [class="discord"] fullscreen enable; border none
 for_window [class="Nautilus"] floating enable
 for_window [class="Gpick"] floating enable
