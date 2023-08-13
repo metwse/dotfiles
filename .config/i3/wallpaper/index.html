@@ -1,16 +1,30 @@
 <style>
-    * { box-sizing: border-box }
+    * { box-sizing: border-box; font-family: inherit; color: inherit }
 
-    /* body { margin: 0; background-image: url(./wallpaper.jpg); background-size: cover } */
+    body { margin: 0; background-image: url(./wallpaper.png); font-family: ubuntu; background-size: cover }
 
-
+    .time-outer { display: flex; height: 100%; align-items: center; color: white }
+    .time { padding: 0 4em; height: fit-content; font-size: 2em }
+    .time .weekday { font-size: 1.5em } 
+    .time .day { font-size: 3em } 
+    .time .clock { font-size: 2em } 
 </style>
 
-<video width="320" height="240" autoplay loop muted>
-  <source src="./wallpaper4.mp4" type="video/mp4" />
-</video>
-<body>
-<iframe width="420" height="345" 
-src="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-</iframe>
-</body>
+<div class="time-outer">
+    <div class="time"></div>
+</div>
+
+<script>
+    const d = document
+    const time_ = d.querySelector('.time')
+
+    
+    setInterval(() => update(), 1000) 
+    
+    function update() {
+        var date = new Date().toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' }).split(', ') 
+        time_.innerHTML = `<span class="weekday">${date[0]}</span><br><span class="day">${date[1]}</span><br><span class="clock">${date[2]}</span><br>@metw`
+    }
+
+    update()
+</script>

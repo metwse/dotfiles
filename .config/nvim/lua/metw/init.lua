@@ -3,7 +3,7 @@ require('metw.set')
 require('metw.remap')
 
 require('nvim-treesitter.configs').setup {
-    ensure_installed = { 'javascript', 'css', 'sql', 'html', 'c', 'lua', 'vim', 'help' },
+    ensure_installed = { 'javascript', 'css', 'sql', 'html', 'c', 'lua', 'vim' },
     auto_install = true,
     highlight = {
         enable = true,
