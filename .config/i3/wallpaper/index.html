@@ -22,9 +22,13 @@
     setInterval(() => update(), 1000) 
     
     function update() {
-        var date = new Date().toLocaleDateString("en-US", { weekday: 'long', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' }).split(', ') 
-        time_.innerHTML = `<span class="weekday">${date[0]}</span><br><span class="day">${date[1]}</span><br><span class="clock">${date[2]}</span><br>@metw`
+        var now = new Date()
+        var weekday = now.toLocaleDateString("en-US", { weekday: 'long' }) 
+        var date = now.toLocaleDateString("en-US", { month: 'long', day: 'numeric' }) 
+        var time = `${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`
+        time_.innerHTML = `<span class="weekday">${weekday}</span><br><span class="day">${date}</span><br><span class="clock">${time}</span><br>@metw`
     }
 
     update()
 </script>
+
