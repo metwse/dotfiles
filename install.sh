@@ -15,9 +15,13 @@ sudo apt install lxpolkit picom i3 maim neovim xclip feh git tmux golang nodejs 
 sudo npm install -g tree-sitter-cli
 
 
-# wallpaper engine
-sudo echo "\n@{HOME}/.config/i3/wallpaper/* r,\n" >> /etc/apparmor.d/local/usr.bin.surf
-sudo apparmor_parser -r /etc/apparmor.d/usr.bin.surf
+# config
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+cp -r ./.config/* ~/.config/
+cp ./.tmux.conf ~/
+cp ./.bashrc ~/
 
 
 # fonts
@@ -30,15 +34,6 @@ mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 mv SymbolsNerdFont-Regular.ttf ~/.fonts/
 mv SymbolsNerdFontMono-Regular.ttf ~/.fonts/
 fc-cache -vf ~/.fonts
-
-
-# config
-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-cp -r ./.config/* ~/.config/
-cp ./.tmux.conf ~/
-cp ./.bashrc ~/
 
 
 # i3blocks
