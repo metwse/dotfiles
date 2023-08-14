@@ -16,9 +16,6 @@ sudo npm install -g tree-sitter-cli
 
 
 # config
-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
 cp -r ./.config/* ~/.config/
 cp ./.tmux.conf ~/
 cp ./.bashrc ~/
@@ -37,6 +34,8 @@ fc-cache -vf ~/.fonts
 
 
 # i3blocks
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 git clone https://github.com/vivien/i3blocks-contrib ~/.config/i3blocks/scripts
 
 
