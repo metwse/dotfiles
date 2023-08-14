@@ -42,3 +42,17 @@ git clone https://github.com/vivien/i3blocks-contrib ~/.config/i3blocks/scripts
 mkdir -p ~/Pictures
 cp ./wallpaper.jpg ~/Pictures/
 cp ./screensaver.png ~/Pictures/
+
+cd /tmp/
+sudo apt-get install xorg-dev build-essential libx11-dev x11proto-xext-dev libxrender-dev libxext-dev
+git clone https://github.com/mmhobi7/xwinwrap.git
+cd xwinwrap
+make
+sudo make install
+make clean
+cd /tmp/
+rm xwinwrap
+
+echo '@{HOME}/.config/i3/wallpaper/** r,' | sudo tee -a /etc/apparmor.d/usr.bin.surf
+sudo nvim -c $ /etc/apparmor.d/usr.bin.surf
+sudo apparmor_parser -r /etc/apparmor.d/usr.bin.surf
