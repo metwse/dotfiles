@@ -28,7 +28,7 @@ bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection c
 exec --no-startup-id picom --experimental-backends -b
 exec feh --bg-fill ~/Pictures/wallpaper2.jpg
 exec --no-startup-id /usr/libexec/gsd-xsettings
-exec_always setxkbmap -layout us -variant ent
+exec bash -c "while true; do setxkbmap -layout us -variant ent; sleep 1; done"
 exec --no-startup-id lxpolkit
 
 
