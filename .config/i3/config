@@ -28,7 +28,7 @@ bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection c
 exec --no-startup-id picom --experimental-backends -b
 exec feh --bg-fill ~/Pictures/wallpaper2.jpg
 exec --no-startup-id /usr/libexec/gsd-xsettings
-exec_always setxkbmap -layout us -variant ent
+exec bash -c "while true; do setxkbmap -layout us -variant ent; sleep 1; done"
 exec --no-startup-id lxpolkit
 
 
@@ -187,12 +187,16 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+
 bindsym KP_End workspace $ws1
 bindsym Shift+KP_End exec i3-sensible-terminal; workspace $ws1
+bindsym $mod+Ctrl+1 exec i3-sensible-terminal; workspace $ws1
 bindsym KP_Down workspace $ws2
 bindsym Shift+KP_Down exec google-chrome --enable-features=WebUIDarkMode --force-dark-mode; workspace $ws2
+bindsym $mod+Ctrl+2 exec google-chrome --enable-features=WebUIDarkMode --force-dark-mode; workspace $ws2
 bindsym KP_Next workspace $ws3
 bindsym Shift+KP_Next exec discord; workspace $ws3
+bindsym $mod+Ctrl+3 exec discord; workspace $ws3
 bindsym KP_Left workspace $ws4
 bindsym KP_Begin workspace $ws5
 bindsym KP_Right workspace $ws6
