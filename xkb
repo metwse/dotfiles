@@ -1,0 +1,40 @@
+xkb_symbols "ent" {
+    name[Group1]= "English - Turkish";
+    include "level3(ralt_switch)"
+    include "us(basic)"
+
+    key <AE01> {[1,	exclam, 		onesubscript, onesuperior]};
+    key <AE02> {[2,	at,		        twosubscript, twosuperior]};
+    key <AE03> {[3,	numbersign,	    threesubscript, threesuperior]};
+    key <AE04> {[4,	dollar,		    foursubscript, foursuperior]};
+    key <AE05> {[5,	Shift_R,      	fivesubscript, fivesuperior]};
+    key <AE06> {[6,	asciicircum,	sixsubscript, sixsuperior]};
+    key <AE07> {[7,	ampersand,	    sevensubscript, sevensuperior]};
+    key <AE08> {[8,	asterisk,	    eightsubscript, eightsuperior]};
+    key <AE09> {[9,	bracketleft,	ninesubscript, ninesuperior]};
+    key <AE10> {[0,	bracketright,   zerosubscript, zerosuperior]};
+
+    key <AD05> {[t,	T,  U20BA]};
+    key <AD07> {[u,	U, 	udiaeresis,     Udiaeresis	]};
+    key <AD08> {[i,	I,  idotless,       Iabovedot   ]};
+    key <AD09> {[o,	O,  odiaeresis,     Odiaeresis  ]};
+    key <AD10> {[p,	P,  percent]};
+    key <AD11> {[parenleft,    	braceleft	]};
+    key <AD12> {[parenright,	braceright	]};
+
+    key <AC01> {[a, A,  acircumflex,    Acircumflex ]};
+    key <AC02> {[s,	S,  scedilla,       Scedilla    ]};
+    key <AC04> {[f,	F,  ccedilla,       Ccedilla    ]};
+    key <AC05> {[g,	G,  gbreve,         Gbreve	    ]};
+    key <AC07> {[j, J,  ucircumflex,    Ucircumflex ]};
+    key <AC08> {[k, K,  icircumflex,    Icircumflex ]};
+    key <AC10> {[colon,	        semicolon	]};
+
+    key <AB03> {[c,	C,  ccedilla,       Ccedilla    ]};
+    key <LSGT> {[Tab, Tab]};
+
+    key <CAPS> {[Escape]};
+    key <TAB>  {[BackSpace, BackSpace]};
+    key <BKSP> {[Tab, Tab]};
+    key <INS> {[Print]};
+};
