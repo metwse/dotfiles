@@ -14,11 +14,12 @@ xkb_symbols "ent" {
     key <AE09> {[9,	bracketleft,	ninesubscript, ninesuperior]};
     key <AE10> {[0,	bracketright,   zerosubscript, zerosuperior]};
 
+    key <AD04> {[r,	R,  radical]};
     key <AD05> {[t,	T,  U20BA]};
     key <AD07> {[u,	U, 	udiaeresis,     Udiaeresis	]};
     key <AD08> {[i,	I,  idotless,       Iabovedot   ]};
     key <AD09> {[o,	O,  odiaeresis,     Odiaeresis  ]};
-    key <AD10> {[p,	P,  percent]};
+    key <AD10> {[p,	P,  percent,        variation]};
     key <AD11> {[parenleft,    	braceleft	]};
     key <AD12> {[parenright,	braceright	]};
 
@@ -31,10 +32,15 @@ xkb_symbols "ent" {
     key <AC10> {[colon,	        semicolon	]};
 
     key <AB03> {[c,	C,  ccedilla,       Ccedilla    ]};
+    key <AB07> {[m,	M,  multiply]	};
     key <LSGT> {[Tab, Tab]};
+
+    key <LEFT> {[Left, Left, U21C4]};
+    key <RGHT> {[Right, Right, rightarrow]};
 
     key <CAPS> {[Escape]};
     key <TAB>  {[BackSpace, BackSpace]};
     key <BKSP> {[Tab, Tab]};
     key <INS> {[Print]};
 };
+
