@@ -3,6 +3,7 @@ exec dunst -config ~/.config/i3/dunst
 exec greenclip daemon
 exec --no-startup-id lxpolkit
 exec --no-startup-id /usr/libexec/gsd-xsettings
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 
 #{{{ Screenshots 
