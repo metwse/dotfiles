@@ -22,7 +22,7 @@ xkb_symbols "cmp" {
     key <AD02> { [w,             W              ] };
     key <AD03> { [f,             F              ] };
     key <AD04> { [p,             P              ] };
-    key <AD05> { [g,             G              ] };
+    key <AD05> { [g,             G,             gbreve,        Gbreve         ] };
     key <AD06> { [j,             J              ] };
     key <AD07> { [l,             L              ] };
     key <AD08> { [u,             U,             udiaeresis,    Udiaeresis,    ucircumflex,   Ucircumflex    ] };
