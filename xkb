@@ -41,7 +41,7 @@ xkb_symbols "cmp" {
     key <AC08> { [e,             E              ] };
     key <AC09> { [i,      	     I,             idotless,      Iabovedot,     icircumflex,   Icircumflex    ] };
     key <AC10> { [o,             O,             odiaeresis,    Odiaeresis     ] };
-    key <AC11> { [underscore,    minus,         207B           ] };
+    key <AC11> { [underscore,    minus,         U207B          ] };
     key <BKSL> { type[Group1]="ONE_LEVEL", symbols[Group1] = [ Tab ] };
 
     key <LSGT> { [colon,         semicolon      ] };
