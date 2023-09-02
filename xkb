@@ -56,8 +56,8 @@ xkb_symbols "cmp" {
     key <AB09> { [parenleft,     braceleft      ] };
     key <AB10> { [parenright,    braceright     ] };
 
-    key <CAPS> { type[Group1]="ONE_LEVEL", symbols[Group1] = [ Escape ] };
-    key <TAB>  { type[Group1]="ONE_LEVEL", symbols[Group1] = [ BackSpace ] };
+    key <TAB> { type[Group1]="ONE_LEVEL", symbols[Group1] = [ Escape ] };
+    key <CAPS>  { type[Group1]="ONE_LEVEL", symbols[Group1] = [ BackSpace ] };
 
     key <LEFT> { [Left,          Left,          U21C4          ] };
     key <RGHT> { [Right,         Right,         rightarrow     ] };
@@ -104,8 +104,8 @@ xkb_symbols "ent" {
     key <LEFT> {[Left, Left, U21C4]};
     key <RGHT> {[Right, Right, rightarrow]};
 
-    key <CAPS> {[Escape]};
-    key <TAB>  {[BackSpace, BackSpace]};
+    key <TAB> {[Escape]};
+    key <CAPS>  {[BackSpace, BackSpace]};
     key <BKSP> {[Tab, Tab]};
     key <INS> {[Print]};
 };
