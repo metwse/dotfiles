@@ -60,3 +60,6 @@ sudo chmod +x /usr/bin/greenclip
 echo '@{HOME}/.config/i3/wallpaper/** r,' | sudo tee -a /etc/apparmor.d/usr.bin.surf
 sudo nvim -c $ /etc/apparmor.d/usr.bin.surf
 sudo apparmor_parser -r /etc/apparmor.d/usr.bin.surf
+
+# delete caps lock
+sudo vi -c '/caps' /usr/share/X11/xkb/compat/complete
