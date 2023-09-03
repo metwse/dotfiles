@@ -48,10 +48,10 @@ xkb_symbols "cmp" {
     key <AB01> { [v,             V              ] };
     key <AB02> { [x,             X              ] };
     key <AB03> { [c,             C,             ccedilla,      Ccedilla       ] };
-    key <AB04> { [period,        less           ] };
+    key <AB04> { [comma,         less           ] };
     key <AB05> { [b,             B              ] };
     key <AB06> { [k,             K              ] };
-    key <AB07> { [comma,         greater        ] };
+    key <AB07> { [period,        greater        ] };
     key <AB08> { [m,             M,             multiply       ] };
     key <AB09> { [parenleft,     braceleft      ] };
     key <AB10> { [parenright,    braceright     ] };
