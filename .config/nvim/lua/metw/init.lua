@@ -15,7 +15,7 @@ require('nvim-treesitter.configs').setup {
 require('presence').setup({
     -- General options
     auto_update         = true,
-    eovim_image_text   = 'The One True Text Editor',
+    neovim_image_text   = 'The One True Text Editor',
     main_image          = 'file',
     client_id           = '793271441293967371',
     log_level           = nil,
