@@ -1,35 +1,37 @@
-# i3 config file (v4)
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
-set $mod Mod4
-exec xwinwrap -ov -fs -- ~/.config/i3/wallpaper.sh WID
-exec dunst -config ~/.config/i3/dunst
-exec ~/.config/i3/popup.sh
-exec ~/.config/i3/numlock.sh
-exec ~/.config/i3/displayClass.sh
-exec greenclip daemon
-exec xset s off
+set $SS_DIR "~/Pictures/ss"
+set $WALLPAPER "~/Pictures/wallpaper.png"
+set $SCREENSAVER "~/Pictures/screensaver.png"
+#set $BROWSER "google-chrome --enable-features=WebUIDarkMode --force-dark-mode"
+set $BROWSER "firefox"
+set $TERMINAL "i3-sensible-terminal"
 
 
+set $m Mod4
+set $m2 Mod1
 
-#{{{ Screenshots 
-bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/ss/$(date).png"
-bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/ss/$(date).png"
-bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/ss/$(date).png"
+exec --no-startup-id dunst -config ~/.config/i3/dunst
+exec --no-startup-id greenclip daemon
+exec --no-startup-id xset s off
+exec --no-startup-id picom --experimental-backends -b
+exec --no-startup-id lxpolkit
 
-# Clipboard Screenshots
+exec_always --no-startup-id setxkbmap -layout us -variant et2
+exec_always --no-startup-id sh -c "feh --bg-fill $WALLPAPER"
+
+
+
+#{{{ screenshots 
+exec --no-startup-id mkdir -p $SS_DIR
+
+bindsym Print exec --no-startup-id maim "$SS_DIR/$(date).png"
+bindsym $m+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "$SS_DIR/$(date).png"
+bindsym Shift+Print exec --no-startup-id maim --select "$SS_DIR/$(date).png"
+
+# clipboard
 bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
-bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+$m+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 #}}}
-
-
-
-exec --no-startup-id picom --experimental-backends -b
-exec feh --bg-fill ~/Pictures/wallpaper2.jpg
-exec --no-startup-id /usr/libexec/gsd-xsettings
-exec bash -c "while true; do setxkbmap -layout us -variant ent; sleep 1; done"
-exec --no-startup-id lxpolkit
 
 
 
@@ -72,7 +74,9 @@ bar {
 
 
 
-#{{{ not sure what is it 
+#{{{ sys 
+exec --no-startup-id /usr/libexec/gsd-xsettings
+
 # Start XDG autostart .desktop files using dex. See alsomy_pattern
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
@@ -82,7 +86,7 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -i ~/Pictures/screensaver.png --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -i $SCREENSAVER --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -97,85 +101,56 @@ set $volumestep 5
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/volume.sh volume_up
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/volume.sh volume_down
 bindsym XF86AudioMute        exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig mute
+
+bindsym $m+q kill
+bindsym $m+Shift+Ctrl+c reload
+bindsym $m+Shift+Ctrl+r restart
+bindsym $m+Shift+Ctrl+e exit
+bindsym $m+Shift+Ctrl+l exec --no-startup-id i3lock -i $SCREENSAVER
+bindsym $m+Shift+Ctrl+s exec --no-startup-id systemctl suspend
 #}}}
-
-
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
-
-
-
-# kill focused window
-bindsym $mod+Shift+q kill
-# reload the configuration file
-bindsym $mod+Shift+Ctrl+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+Ctrl+r restart
-# toggle focused window's border
-bindsym $mod+b border toggle
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+Ctrl+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-# lock
-bindsym $mod+Shift+Ctrl+l exec --no-startup-id i3lock -i ~/Pictures/screensaver.png
-# suspend
-bindsym $mod+Shift+Ctrl+s exec "i3-nagbar -t warning -m 'You pressed suspend shortcut. Do you really want to suspend i3' -B 'Yes, suspend i3' '~/.config/i3/i3exit suspend'"
-
-popup_during_fullscreen smart
-# start dmenu (a program launcher)
-bindsym $mod+d exec "rofi -combi-modi window#drun -show run -modi combi,keys,drun -show-icons"
-bindcode $mod+61 exec "rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'"
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
-# bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+e exec nautilus
 
 
 
 #{{{ moves & tilting 
 # move focused window
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $m2+h focus left
+bindsym $m2+j focus down
+bindsym $m2+k focus up
+bindsym $m2+l focus right
 
 # move window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-
-# Focus the next output (effectively toggles when you only have two outputs)
-bindsym $mod+x move workspace to output next
+bindsym $m2+Shift+h move left
+bindsym $m2+Shift+j move down
+bindsym $m2+Shift+k move up
+bindsym $m2+Shift+l move right
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $m+f fullscreen toggle
+floating_modifier $m
+popup_during_fullscreen smart
+bindsym $m+b border toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+Ctrl+s layout stacking
-bindsym $mod+Ctrl+w layout tabbed
-bindsym $mod+Ctrl+e layout toggle split
-bindsym $mod+Ctrl+h split h
-bindsym $mod+Ctrl+v split v
+bindsym $m+Ctrl+w layout tabbed
+bindsym $m+Ctrl+e layout toggle split
+bindsym $m+Ctrl+h split h
+bindsym $m+Ctrl+v split v
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $m+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $m+Shift+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
-bindsym $mod+s focus child
+bindsym $m+a focus parent
+bindsym $m+s focus child
 #}}}
 
 
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-set $ws0 "0"
+#{{{ workspaces 
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -185,53 +160,54 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
-
 
 bindsym KP_End workspace $ws1
-bindsym Shift+KP_End exec i3-sensible-terminal; workspace $ws1
-bindsym $mod+Ctrl+1 exec i3-sensible-terminal; workspace $ws1
+bindsym Shift+KP_End workspace $ws1; exec --no-startup-id $TERMINAL
 bindsym KP_Down workspace $ws2
-bindsym Shift+KP_Down exec google-chrome --enable-features=WebUIDarkMode --force-dark-mode; workspace $ws2
-bindsym $mod+Ctrl+2 exec google-chrome --enable-features=WebUIDarkMode --force-dark-mode; workspace $ws2
+bindsym Shift+KP_Down workspace $ws2; exec --no-startup-id $BROWSER
 bindsym KP_Next workspace $ws3
-bindsym Shift+KP_Next exec discord; workspace $ws3
-bindsym $mod+Ctrl+3 exec discord; workspace $ws3
 bindsym KP_Left workspace $ws4
 bindsym KP_Begin workspace $ws5
 bindsym KP_Right workspace $ws6
 bindsym KP_Home workspace $ws7
 bindsym KP_Up workspace $ws8
 bindsym KP_Prior workspace $ws9
-bindsym KP_Insert workspace $ws10
 
 bindsym KP_Subtract move scratchpad
 bindsym KP_Add scratchpad show
-bindsym KP_Delete workspace $ws0
+bindsym $m+n move scratchpad
+bindsym $m+m scratchpad show
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $m+j workspace $ws1
+bindsym $m+k workspace $ws2
+bindsym $m+l workspace $ws3
+bindcode $m+47 workspace $ws4
+bindsym $m+u workspace $ws5
+bindsym $m+i workspace $ws6
+bindsym $m+o workspace $ws7
+bindsym $m+p workspace $ws8
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $m+Shift+j move container to workspace $ws1
+bindsym $m+Shift+k move container to workspace $ws2
+bindsym $m+Shift+l move container to workspace $ws3
+bindcode $m+Shift+47 move container to workspace $ws4
+bindsym $m+Shift+u move container to workspace $ws5
+bindsym $m+Shift+i move container to workspace $ws6
+bindsym $m+Shift+o move container to workspace $ws7
+bindsym $m+Shift+p move container to workspace $ws8
+
+# launch app
+bindsym $m+Return workspace $ws1; exec --no-startup-id $TERMINAL
+bindsym $m+g workspace $ws2; exec --no-startup-id $BROWSER
+bindsym $m+e exec nautilus
+
+bindsym $m+d exec --no-startup-id "rofi -combi-modi window#drun -show run -modi combi,keys,drun -show-icons"
+bindcode $m+60 exec --no-startup-id "rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'"
+# bindcode $m+40 exec --no-startup-id i3-dmenu-desktop
+# bindsym $m+d exec --no-startup-id dmenu_run
+#}}}
 
 
 
@@ -256,12 +232,10 @@ mode "resize" {
     bindsym Shift+k resize shrink height 100 px or 100 ppt
     bindsym Shift+l resize grow width 100 px or 100 ppt
 
-    # back to normal: Enter or Escape or $mod+r
     bindsym Return mode "default"
     bindsym Escape mode "default"
-    bindsym $mod+r mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $m+r mode "resize"
 
 # move window (you can also use the mouse for that)
 mode "move" {
@@ -292,24 +266,25 @@ mode "move" {
     bindsym Shift+k move up 100 px
     bindsym Shift+l move right 100 px
     
-    # back to normal: Enter or Escape or $mod+r
     bindsym Return mode "default"
     bindsym Escape mode "default"
-    bindsym $mod+r mode "default"
 }
-bindsym $mod+m mode "move"
+bindsym $m+h mode "move"
+
 
 
 
 assign [class="(i?).*terminal.*"] $ws1
 assign [class="Google-chrome"] $ws2
+assign [class="firefox"] $ws2
 assign [class="discord"] $ws3
-
-exec --no-startup-id google-chrome --enable-features=WebUIDarkMode --force-dark-mode
-exec i3-sensible-terminal
 
 for_window [class="(i?).*terminal.*"] fullscreen enable; border none
 for_window [class="Google-chrome"] layout tabbed; border none
+for_window [class="firefox"] layout tabbed; border none
 for_window [class="discord"] fullscreen enable; border none
 for_window [class="Nautilus"] floating enable
 for_window [class="Gpick"] floating enable
+
+exec --no-startup-id $TERMINAL
+exec --no-startup-id $BROWSER
