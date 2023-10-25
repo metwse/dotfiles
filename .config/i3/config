@@ -15,7 +15,8 @@ exec --no-startup-id xset s off
 exec --no-startup-id picom --experimental-backends -b
 exec --no-startup-id lxpolkit
 
-exec_always --no-startup-id setxkbmap -layout us -variant et2
+exec --no-startup-id bash -c "while true; do setxkbmap -layout us -variant et2; xmodmap -e 'clear lock'; sleep 1; done"
+
 exec_always --no-startup-id sh -c "feh --bg-fill $WALLPAPER"
 
 
