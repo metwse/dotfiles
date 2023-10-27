@@ -1,8 +1,8 @@
 set $SS_DIR "~/Pictures/ss"
 set $WALLPAPER "~/Pictures/wallpaper.png"
 set $SCREENSAVER "~/Pictures/screensaver.png"
-#set $BROWSER "google-chrome --enable-features=WebUIDarkMode --force-dark-mode"
 set $BROWSER "firefox"
+set $BROWSER2 "google-chrome --enable-features=WebUIDarkMode --force-dark-mode"
 set $TERMINAL "i3-sensible-terminal"
 
 
@@ -167,6 +167,7 @@ bindsym Shift+KP_End workspace $ws1; exec --no-startup-id $TERMINAL
 bindsym KP_Down workspace $ws2
 bindsym Shift+KP_Down workspace $ws2; exec --no-startup-id $BROWSER
 bindsym KP_Next workspace $ws3
+bindsym Shift+KP_Next workspace $ws3; exec --no-startup-id discord
 bindsym KP_Left workspace $ws4
 bindsym KP_Begin workspace $ws5
 bindsym KP_Right workspace $ws6
@@ -202,6 +203,7 @@ bindsym $m+Shift+p move container to workspace $ws8
 # launch app
 bindsym $m+Return workspace $ws1; exec --no-startup-id $TERMINAL
 bindsym $m+g workspace $ws2; exec --no-startup-id $BROWSER
+bindsym $m+Shift+g workspace $ws2; exec --no-startup-id $BROWSER2
 bindsym $m+e exec nautilus
 
 bindsym $m+d exec --no-startup-id "rofi -combi-modi window#drun -show run -modi combi,keys,drun -show-icons"
