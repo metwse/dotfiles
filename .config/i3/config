@@ -206,8 +206,8 @@ bindsym $m+g workspace $ws2; exec --no-startup-id $BROWSER
 bindsym $m+Shift+g workspace $ws2; exec --no-startup-id $BROWSER2
 bindsym $m+e exec nautilus
 
-bindsym $m+d exec --no-startup-id "rofi -combi-modi window#drun -show run -modi combi,keys,drun -show-icons"
-bindcode $m+60 exec --no-startup-id "rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'"
+bindsym $m+d exec --no-startup-id "rofi -modi combi -combi-modi 'run,drun,pk:~/.config/i3/rofi/kill.sh' -combi-display-format '{mode}{text}' -display-combi '$' -display-drun 'd ' -display-run '' -show"
+bindcode $m+60 exec --no-startup-id "rofi -modi 'clipboard:greenclip print' -show clipboard"
 # bindcode $m+40 exec --no-startup-id i3-dmenu-desktop
 # bindsym $m+d exec --no-startup-id dmenu_run
 #}}}
