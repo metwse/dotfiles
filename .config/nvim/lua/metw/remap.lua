@@ -40,7 +40,14 @@ vim.cmd(':ca X x')
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', function() builtin.grep_string({ search = vim.fn.input('Grep > ')}) end, {})
+vim.keymap.set('n', '<leader>fl', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+vim.keymap.set('n', '<leader>fj', builtin.jumplist, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fu', builtin.current_buffer_fuzzy_find, {})
+vim.keymap.set('n', '<leader>fy', builtin.registers, {})
+vim.keymap.set('n', '<leader>fa', builtin.builtin, {})
+
 
 
 
@@ -77,6 +84,6 @@ vim.keymap.set('n', '<leader>g', ':Git\n')
 for c in ('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'):gmatch('.') do
     vim.keymap.set('n', '<leader>y' .. c, ':Telescope neoclip ' .. c .. '\n')
 end
-vim.keymap.set('n', '<leader>y"', ':Telescope neoclip unnamed\n')
+vim.keymap.set('n', '<leader><leader>y', ':Telescope neoclip unnamed\n')
 vim.keymap.set('n', '<leader>y*', ':Telescope neoclip star\n')
 vim.keymap.set('n', '<leader>y+', ':Telescope neoclip plus\n')
