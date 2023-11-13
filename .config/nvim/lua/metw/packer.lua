@@ -4,7 +4,7 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.4-1',
+        'nvim-telescope/telescope.nvim', tag = '0.1.x',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
 
@@ -50,7 +50,7 @@ return require('packer').startup(function(use)
 
 
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-    use { 'andweeb/presence.nvim',  { branch = 'xdg-runtime-dir-fix' } }
+    use { 'andweeb/presence.nvim' }
 
     use 'AckslD/nvim-neoclip.lua'
 end)
