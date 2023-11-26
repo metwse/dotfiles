@@ -16,7 +16,7 @@ exec --no-startup-id xset s off
 exec --no-startup-id picom --experimental-backends -b
 exec --no-startup-id lxpolkit
 
-exec --no-startup-id /opt/activitywatch/aw-qt --no-gui
+#exec --no-startup-id /opt/activitywatch/aw-qt --no-gui
 exec_always --no-startup-id sh -c "feh --bg-fill $WALLPAPER"
 
 
