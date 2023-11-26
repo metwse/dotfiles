@@ -3,7 +3,6 @@
     origin = bottom-center
     separator_color = "#b3cfa7"
 
-    frame_color = "#b3cfa7"
     frame_width = 1
     indicate_hidden = yes
 
@@ -27,13 +26,16 @@
 
 [urgency_low]
     background = "#202426"
+    frame_color = "#b3cfa7"
     foreground = "#b3cfa7"
 
 [urgency_normal]
     background = "#202426"
+    frame_color = "#b3cfa7"
     foreground = "#b3cfa7"
 
 [urgency_critical]
     background = "#202426"
-    foreground = "#b3cfa7"
+    frame_color = "#fc7414"
+    foreground = "#fc7414"
     timeout = 0

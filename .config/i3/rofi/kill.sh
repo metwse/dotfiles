@@ -1,4 +1,6 @@
 #!/bin/bash
+# by @metwse
+# feel free to use without credit
 
 if [ -z "$@" ]; then
     echo -en "\0prompt\n"
