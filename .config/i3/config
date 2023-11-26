@@ -4,6 +4,7 @@ set $SCREENSAVER "$HOME/Pictures/screensaver.png"
 set $BROWSER "firefox"
 set $BROWSER2 "google-chrome --enable-features=WebUIDarkMode --force-dark-mode"
 set $TERMINAL "i3-sensible-terminal"
+set $I3CONFIGDIR $HOME/.config/i3/
 
 
 set $m Mod4
@@ -15,6 +16,7 @@ exec --no-startup-id xset s off
 exec --no-startup-id picom --experimental-backends -b
 exec --no-startup-id lxpolkit
 
+exec --no-startup-id /opt/activitywatch/aw-qt --no-gui
 exec_always --no-startup-id sh -c "feh --bg-fill $WALLPAPER"
 
 
@@ -206,6 +208,7 @@ bindsym $m+e exec nautilus
 
 bindsym $m+d exec --no-startup-id "rofi -modi combi -combi-modi 'run,drun,pk:~/.config/i3/rofi/kill.sh' -combi-display-format '{mode}{text}' -display-combi '$' -display-drun 'd ' -display-run '' -show"
 bindcode $m+60 exec --no-startup-id "rofi -modi 'clipboard:greenclip print' -show clipboard"
+bindcode $m+59 exec --no-startup-id $I3CONFIGDIR/rofi/bluetooth.sh
 # bindcode $m+40 exec --no-startup-id i3-dmenu-desktop
 # bindsym $m+d exec --no-startup-id dmenu_run
 #}}}
