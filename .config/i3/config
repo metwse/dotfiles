@@ -206,10 +206,10 @@ bindsym $m+g workspace $ws2; exec --no-startup-id $BROWSER
 bindsym $m+Shift+g workspace $ws2; exec --no-startup-id $BROWSER2
 bindsym $m+e exec nautilus
 
-bindcode $m+d exec --no-startup-id $I3CONFIGDIR/rofi/kill.sh
+bindsym $m+d exec --no-startup-id $I3CONFIGDIR/rofi/kill.sh
 bindcode $m+60 exec --no-startup-id "rofi -modi 'Clipboard:greenclip print' -show Clipboard"
 bindcode $m+59 exec --no-startup-id $I3CONFIGDIR/rofi/bluetooth.sh
-bindcode $m+t exec --no-startup-id $I3CONFIGDIR/rofi/todofi.sh
+bindsym $m+t exec --no-startup-id $I3CONFIGDIR/rofi/todofi.sh
 # bindcode $m+40 exec --no-startup-id i3-dmenu-desktop
 # bindsym $m+d exec --no-startup-id dmenu_run
 #}}}
