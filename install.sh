@@ -11,7 +11,7 @@ sudo sh -c "echo 'deb https://baltocdn.com/i3-window-manager/i3/i3-autobuild-ubu
 
 sudo apt update
 
-sudo apt install lxpolkit picom i3 maim neovim xclip feh git tmux golang nodejs wget rofi i3blocks xbacklight surf golang sway swayidle xss-lock ripgrep
+sudo apt install lxpolkit picom i3 maim neovim xclip feh git tmux golang nodejs wget rofi i3blocks xbacklight surf golang sway swayidle xss-lock ripgrep todotxt-cli
 sudo npm install -g tree-sitter-cli
 
 
