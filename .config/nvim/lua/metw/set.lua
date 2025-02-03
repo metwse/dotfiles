@@ -21,5 +21,6 @@ vim.opt.scrolloff = 8
 vim.g.mapleader = ' '
 
 vim.opt.fdm = 'marker'
+vim.opt.colorcolumn = '80'
 pcall(vim.cmd, { 'au BufWinLeave * mkview' })
 pcall(vim.cmd, { 'au BufWinEnter * silent loadview' })

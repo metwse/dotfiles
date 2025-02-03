@@ -52,7 +52,7 @@ require('neoclip').setup({
     enable_macro_history = true,
     content_spec_column = false,
     on_select = { move_to_front = false, close_telescope = true },
-    on_paste = { set_reg = false, move_to_front = false, close_telescope = true }, 
+    on_paste = { set_reg = false, move_to_front = false, close_telescope = true },
     on_replay = { set_reg = false, move_to_front = false, close_telescope = true },
     on_custom_action = { close_telescope = true },
     keys = {
