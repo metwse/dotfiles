@@ -1,173 +1,102 @@
-xkb_symbols "cmp" {
-    name[Group1]= "Programmer Colemak";
-    key <RALT> { type[Group1]="ONE_LEVEL", symbols[Group1] = [ ISO_Level3_Shift ] };
-    key <BKSP> { type[Group1]="ONE_LEVEL", symbols[Group1] = [ ISO_Level5_Shift ] };
+default partial alphanumeric_keys modifier_keys
+xkb_symbols "basic" {
+    name[Group1]= "English (US)";
     key.type[Group1] = "EIGHT_LEVEL";
- 
-    key <TLDE> { [asciicircum,   asciitilde     ] };
-    key <AE01> { [plus,          9,             ninesubscript, ninesuperior   ] };
-    key <AE02> { [ampersand,     7,             sevensubscript,sevensuperior  ] };
-    key <AE03> { [excalm,        5,             fivesubscript, fivesuperior   ] };
-    key <AE04> { [braceleft,     3,             threesubscript,threesuperior  ] };
-    key <AE05> { [backslash,     1,             onesubscript,  onesuperior    ] };
-    key <AE06> { [numbersign,    0,             zerosubscript, zerosuperior   ] };
-    key <AE07> { [bracketright,  2,             twosubscript,  twosuperior    ] };
-    key <AE08> { [grave,         4,             foursubscript, foursuperior   ] };
-    key <AE09> { [dollar,        6,             sixsubscript,  sixsuperior    ] };
-    key <AE10> { [asterisk,      8,             eightsubscript,eightsuperior  ] };
-    key <AE11> { [question,      bar            ] };
-    key <AE12> { [at,            percent,       U207A          ] };
 
-    key <AD01> { [q,             Q              ] };
-    key <AD02> { [w,             W              ] };
-    key <AD03> { [f,             F              ] };
-    key <AD04> { [p,             P              ] };
-    key <AD05> { [g,             G,             gbreve,        Gbreve         ] };
-    key <AD06> { [j,             J              ] };
-    key <AD07> { [l,             L              ] };
-    key <AD08> { [u,             U,             udiaeresis,    Udiaeresis,    ucircumflex,   Ucircumflex    ] };
-    key <AD09> { [y,             Y              ] };
-    key <AD10> { [quotedbl,      apostrophe     ] };
-    key <AD11> { [equal,         slash          ] };
-    key <AD12> { [z,             Z              ] };
-                                                
-    key <AC01> { [a,             A,             VoidSymbol,    VoidSymbol,    acircumflex,   Acircumflex    ] };
-    key <AC02> { [r,             R,             radical        ] };
-    key <AC03> { [s,             S,             scedilla,      Scedilla       ] };
-    key <AC04> { [t,             T,             U20BA          ] };
-    key <AC05> { [d,             D              ] };
-    key <AC06> { [h,             H              ] };
-    key <AC07> { [n,             N              ] };
-    key <AC08> { [e,             E              ] };
-    key <AC09> { [i,      	     I,             idotless,      Iabovedot,     icircumflex,   Icircumflex    ] };
-    key <AC10> { [o,             O,             odiaeresis,    Odiaeresis     ] };
-    key <AC11> { [underscore,    minus,         U207B          ] };
-    key <BKSL> { type[Group1]="ONE_LEVEL", symbols[Group1] = [ Tab ] };
+    key <TLDE> { [ grave,          asciitilde      ] };
+    key <AE01> { [ 1,              exclam          ] };
+    key <AE02> { [ 2,              at              ] };
+    key <AE03> { [ 3,              numbersign      ] };
+    key <AE04> { [ 4,              dollar          ] };
+    key <AE05> { [ 5,              percent         ] };
+    key <AE06> { [ 6,              asciicircum     ] };
+    key <AE07> { [ 7,              ampersand       ] };
+    key <AE08> { [ 8,              asterisk        ] };
+    key <AE09> { [ 9,              parenleft       ] };
+    key <AE10> { [ 0,              parenright      ] };
+    key <AE11> { [ minus,          underscore      ] };
+    key <AE12> { [ equal,          plus            ] };
 
-    key <LSGT> { [colon,         semicolon      ] };
-    key <AB01> { [v,             V              ] };
-    key <AB02> { [x,             X              ] };
-    key <AB03> { [c,             C,             ccedilla,      Ccedilla       ] };
-    key <AB04> { [comma,         less           ] };
-    key <AB05> { [b,             B              ] };
-    key <AB06> { [k,             K              ] };
-    key <AB07> { [period,        greater        ] };
-    key <AB08> { [m,             M,             multiply       ] };
-    key <AB09> { [parenleft,     braceleft      ] };
-    key <AB10> { [parenright,    braceright     ] };
+    key <AD01> { [ q,    Q ] };
+    key <AD02> { [ w,    W ] };
+    key <AD03> { [ e,    E ] };
+    key <AD04> { [ r,    R ] };
+    key <AD05> { [ t,    T ] };
+    key <AD06> { [ y,    Y ] };
+    key <AD07> { [ u,    U ] };
+    key <AD08> { [ i,    I ] };
+    key <AD09> { [ o,    O ] };
+    key <AD10> { [ p,    P ] };
+    key <AD11> { [ bracketleft,    braceleft       ] };
+    key <AD12> { [ bracketright,   braceright      ] };
 
-    key <TAB>  { type[Group1]="ONE_LEVEL", symbols[Group1] = [ Escape ] };
-    key <CAPS> { type[Group1]="ONE_LEVEL", symbols[Group1] = [ BackSpace ] };
+    key <AC01> { [ a,    A ] };
+    key <AC02> { [ s,    S ] };
+    key <AC03> { [ d,    D ] };
+    key <AC04> { [ f,    F ] };
+    key <AC05> { [ g,    G ] };
+    key <AC06> { [ h,    H ] };
+    key <AC07> { [ j,    J ] };
+    key <AC08> { [ k,    K ] };
+    key <AC09> { [ l,    L ] };
+    key <AC10> { [ semicolon,      colon           ] };
+    key <AC11> { [ apostrophe,     quotedbl        ] };
 
-    key <LEFT> { [Left,          Left,          U21C4          ] };
-    key <RGHT> { [Right,         Right,         rightarrow     ] };
-};
+    key <AB01> { [ z,    Z ] };
+    key <AB02> { [ x,    X ] };
+    key <AB03> { [ c,    C ] };
+    key <AB04> { [ v,    V ] };
+    key <AB05> { [ b,    B ] };
+    key <AB06> { [ n,    N ] };
+    key <AB07> { [ m,    M ] };
+    key <AB08> { [ comma,          less            ] };
+    key <AB09> { [ period,         greater         ] };
+    key <AB10> { [ slash,          question        ] };
 
+    key <BKSL> { [ backslash,    bar         ] };
+    key <RALT> { type[Group1] = "ONE_LEVEL", symbols[Group1] = [ ISO_Level3_Shift ] };
+    key <ESC>  { type[Group1] = "ONE_LEVEL", symbols[Group1] = [ ISO_Level5_Shift ] };
 
-xkb_symbols "et2" {
-    name[Group1]= "English - Turkish 2";
-    key <RALT> { type[Group1]="ONE_LEVEL", symbols[Group1] = [ ISO_Level3_Shift ] };
-    key <ESC> { type[Group1]="ONE_LEVEL", symbols[Group1] = [ ISO_Level5_Shift ] };
-    key.type[Group1] = "EIGHT_LEVEL";
-    include "us(basic)"
+    key <AE01> { [ exclam,         1,              onesubscript,   onesuperior     ] };
+    key <AE02> { [ at,             2,              twosubscript,   twosuperior     ] };
+    key <AE03> { [ numbersign,     3,              threesubscript, threesuperior   ] };
+    key <AE04> { [ dollar,         4,              foursubscript,  foursuperior    ] };
+    key <AE05> { [ percent,        5,              fivesubscript,  fivesuperior    ] };
+    key <AE06> { [ asciicircum,    6,              sixsubscript,   sixsuperior     ] };
+    key <AE07> { [ ampersand,      7,              sevensubscript, sevensuperior   ] };
+    key <AE08> { [ asterisk,       8,              eightsubscript, eightsuperior   ] };
+    key <AE09> { [ bracketleft,    9,              ninesubscript,  ninesuperior    ] };
+    key <AE10> { [ bracketright,   0,              zerosubscript,  zerosuperior    ] };
 
-    key <AE01> { [exclam,         1,              onesubscript,   onesuperior     ] };
-    key <AE02> { [at,             2,              twosubscript,   twosuperior     ] };
-    key <AE03> { [numbersign,     3,              threesubscript, threesuperior   ] };
-    key <AE04> { [dollar,         4,              foursubscript,  foursuperior    ] };
-    key <AE05> { [percent,        5,              fivesubscript,  fivesuperior    ] };
-    key <AE06> { [asciicircum,    6,              sixsubscript,   sixsuperior     ] };
-    key <AE07> { [ampersand,      7,              sevensubscript, sevensuperior   ] };
-    key <AE08> { [asterisk,       8,              eightsubscript, eightsuperior   ] };
-    key <AE09> { [bracketleft,    9,              ninesubscript,  ninesuperior    ] };
-    key <AE10> { [bracketright,   0,              zerosubscript,  zerosuperior    ] };
+    key <AD01> { [ q,              Q,              U00E4,          U00C4           ] };
+    key <AD04> { [ r,              R,              radical         ] };
+    key <AD05> { [ t,              T,              U20BA           ] };
+    key <AD07> { [ u,              U,              udiaeresis,     Udiaeresis      ] };
+    key <AD08> { [ i,              I,              idotless,       Iabovedot       ] };
+    key <AD09> { [ o,              O,              odiaeresis,     Odiaeresis      ] };
+    key <AD10> { [ p,              P,              variation       ] };
+    key <AD11> { [ parenleft,      braceleft       ] };
+    key <AD12> { [ parenright,     braceright      ] };
 
-    key <AD04> { [r,              R,              radical         ] };
-    key <AD05> { [t,              T,              U20BA           ] };
-    key <AD07> { [u,              U,              udiaeresis,     Udiaeresis      ] };
-    key <AD08> { [i,              I,              idotless,       Iabovedot       ] };
-    key <AD09> { [o,              O,              odiaeresis,     Odiaeresis      ] };
-    key <AD10> { [p,              P,              variation       ] };
-    key <AD11> { [parenleft,      braceleft       ] };
-    key <AD12> { [parenright,     braceright      ] };
+    key <AC01> { [ a,              A,              acircumflex,    Acircumflex     ] };
+    key <AC02> { [ s,              S,              scedilla,       Scedilla        ] };
+    key <AC04> { [ f,              F,              ccedilla,       Ccedilla        ] };
+    key <AC05> { [ g,              G,              gbreve,         Gbreve          ] };
+    key <AC07> { [ j,              J,              ucircumflex,    Ucircumflex     ] };
+    key <AC08> { [ k,              K,              icircumflex,    Icircumflex     ] };
+    key <AC10> { [ colon,          semicolon       ] };
 
-    key <AC01> { [a,              A,              acircumflex,    Acircumflex     ] };
-    key <AC02> { [s,              S,              scedilla,       Scedilla        ] };
-    key <AC04> { [f,              F,              ccedilla,       Ccedilla        ] };
-    key <AC05> { [g,              G,              gbreve,         Gbreve	      ] };
-    key <AC07> { [j,              J,              ucircumflex,    Ucircumflex     ] };
-    key <AC08> { [k,              K,              icircumflex,    Icircumflex     ] };
-    key <AC10> { [colon,          semicolon       ] };
+    key <AB03> { [ c,              C,              ccedilla,       Ccedilla        ] };
+    key <AB07> { [ m,              M,              multiply        ] };
 
-    key <AB03> { [c,              C,              ccedilla,       Ccedilla        ] };
-    key <AB07> { [m,              M,              multiply        ] };
+    key <LEFT> { [ Left,           Left,           U21C4           ] };
+    key <RGHT> { [ Right,          Right,          rightarrow      ] };
 
-    key <LEFT> { [Left,           Left,           U21C4           ] };
-    key <RGHT> { [Right,          Right,          rightarrow      ] };
-
-    key <TAB> { type[Group1]="ONE_LEVEL", symbols[Group1] = [ Escape ] };
-    key <INS> { type[Group1]="ONE_LEVEL", symbols[Group1] = [ Print ] };
-    key <CAPS> { type[Group1]="ONE_LEVEL", symbols[Group1] = [ BackSpace ] };
-    key <BKSP> { type[group1]="ONE_LEVEL", symbols[group1] = [ Tab ] };
-    key <LSGT> { type[Group1]="ONE_LEVEL", symbols[Group1] = [ F12 ] };
-    key <LMTA> { type[group1]="ONE_LEVEL", symbols[group1] = [ Alt_L ] };
-    key <LALT> { type[group1]="ONE_LEVEL", symbols[group1] = [ Super_L ] };
-
-    key <FK01> { [1,              F1              ] };
-    key <FK02> { [2,              F2              ] };
-    key <FK03> { [3,              F3              ] };
-    key <FK04> { [4,              F4              ] };
-    key <FK05> { [5,              F5              ] };
-    key <FK06> { [6,              F6              ] };
-    key <FK07> { [7,              F7              ] };
-    key <FK08> { [8,              F8              ] };
-    key <FK09> { [9,              F9              ] };
-    key <FK10> { [0,              F10             ] };
-};
-
-
-xkb_symbols "ent" {
-    name[Group1]= "English - Turkish";
-    include "level3(ralt_switch)"
-    include "us(basic)"
-
-    key <AE01> {[1,	exclam, 		onesubscript, onesuperior]};
-    key <AE02> {[2,	at,		        twosubscript, twosuperior]};
-    key <AE03> {[3,	numbersign,	    threesubscript, threesuperior]};
-    key <AE04> {[4,	dollar,		    foursubscript, foursuperior]};
-    key <AE05> {[5,	percent,      	fivesubscript, fivesuperior]};
-    key <AE06> {[6,	asciicircum,	sixsubscript, sixsuperior]};
-    key <AE07> {[7,	ampersand,	    sevensubscript, sevensuperior]};
-    key <AE08> {[8,	asterisk,	    eightsubscript, eightsuperior]};
-    key <AE09> {[9,	bracketleft,	ninesubscript, ninesuperior]};
-    key <AE10> {[0,	bracketright,   zerosubscript, zerosuperior]};
-
-    key <AD04> {[r,	R,  radical]};
-    key <AD05> {[t,	T,  U20BA]};
-    key <AD07> {[u,	U, 	udiaeresis,     Udiaeresis	]};
-    key <AD08> {[i,	I,  idotless,       Iabovedot   ]};
-    key <AD09> {[o,	O,  odiaeresis,     Odiaeresis  ]};
-    key <AD10> {[p,	P,  variation]};
-    key <AD11> {[parenleft,    	braceleft	]};
-    key <AD12> {[parenright,	braceright	]};
-
-    key <AC01> {[a, A,  acircumflex,    Acircumflex ]};
-    key <AC02> {[s,	S,  scedilla,       Scedilla    ]};
-    key <AC04> {[f,	F,  ccedilla,       Ccedilla    ]};
-    key <AC05> {[g,	G,  gbreve,         Gbreve	    ]};
-    key <AC07> {[j, J,  ucircumflex,    Ucircumflex ]};
-    key <AC08> {[k, K,  icircumflex,    Icircumflex ]};
-    key <AC10> {[colon,	        semicolon	]};
-
-    key <AB03> {[c,	C,  ccedilla,       Ccedilla    ]};
-    key <AB07> {[m,	M,  multiply]	};
-    key <LSGT> {[Tab, Tab]};
-
-    key <LEFT> {[Left, Left, U21C4]};
-    key <RGHT> {[Right, Right, rightarrow]};
-
-    key <TAB> {[Escape]};
-    key <CAPS>  {[BackSpace, BackSpace]};
-    key <BKSP> {[Tab, Tab]};
-    key <INS> {[Print]};
+    key <TAB>  { type[Group1] = "ONE_LEVEL", symbols[Group1] = [ Escape ] };
+    key <INS>  { type[Group1] = "ONE_LEVEL", symbols[Group1] = [ Print ] };
+    key <CAPS> { type[Group1] = "ONE_LEVEL", symbols[Group1] = [ BackSpace ] };
+    key <BKSP> { type[group1] = "ONE_LEVEL", symbols[group1] = [ Tab ] };
+    key <LSGT> { type[Group1] = "ONE_LEVEL", symbols[Group1] = [ F12 ] };
+    key <LMTA> { type[group1] = "ONE_LEVEL", symbols[group1] = [ Alt_L ] };
+    key <LALT> { type[group1] = "ONE_LEVEL", symbols[group1] = [ Super_L ] };
 };
