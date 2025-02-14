@@ -12,9 +12,9 @@ sudo npm install -g tree-sitter-cli
 
 
 # config
-cp -r ./.config/* ~/.config/
-cp ./.tmux.conf ~/
-cp ./.bashrc ~/
+cp -r ./config/* ~/.config/
+cp ./tmux.conf ~/.tmux.conf
+cp ./bashrc ~/.bashrc
 
 
 # fonts
@@ -29,10 +29,13 @@ mv SymbolsNerdFontMono-Regular.ttf ~/.fonts/
 fc-cache -vf ~/.fonts
 
 
+# rofi-tdk
+sudo wget https://github.com/metwse/rofi-tdk.sh/releases/latest/download/rofi-tdk.tar.gz -O /var/rofi-tdk.tar.gz
+
+
 # i3blocks
 git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-git clone https://github.com/vivien/i3blocks-contrib ~/.config/i3blocks/scripts
 
 
 # greenclip

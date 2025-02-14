@@ -1,0 +1,15 @@
+[submodule "config/i3/rofi/rofi-bluetooth"]
+	path = config/metw-dotfiles-modules/rofi/rofi-bluetooth
+	url = https://github.com/nickclyde/rofi-bluetooth
+[submodule "config/modules/rofi/todofi.sh"]
+	path = config/metw-dotfiles-modules/rofi/todofi.sh
+	url = https://github.com/hugokernel/todofi.sh
+[submodule "config/modules/rofi/rofi-tdk.sh"]
+	path = config/metw-dotfiles-modules/rofi/rofi-tdk.sh
+	url = https://github.com/metwse/rofi-tdk.sh
+[submodule "config/modules/i3/i3-volume"]
+	path = config/metw-dotfiles-modules/i3/i3-volume
+	url = https://github.com/hastinbe/i3-volume
+[submodule "config/metw-dotfiles-modules/i3/i3blocks-contrib"]
+	path = config/metw-dotfiles-modules/i3/i3blocks-contrib
+	url = https://github.com/vivien/i3blocks-contrib
