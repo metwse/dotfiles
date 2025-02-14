@@ -10,7 +10,7 @@ set $I3CONFIGDIR $HOME/.config/i3/
 set $m Mod4
 set $m2 Mod1
 
-exec --no-startup-id dunst -config ~/.config/i3/dunst
+exec --no-startup-id dunst -config ~/.config/dunst
 exec --no-startup-id greenclip daemon
 exec --no-startup-id xset s off
 exec --no-startup-id picom --experimental-backends -b
@@ -99,9 +99,9 @@ set $statuscmd i3blocks
 set $statussig SIGUSRN+10
 set $volumestep 5
 # Using pulseaudio-utils (append "-s $sinkname" without quotes to override default sink)
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/volume.sh volume_up
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/volume.sh volume_down
-bindsym XF86AudioMute        exec --no-startup-id $volumepath/volume -n -t $statuscmd -u $statussig mute
+bindsym XF86AudioRaiseVolume exec --no-startup-id $I3CONFIGDIR/volume.sh up 2 -np
+bindsym XF86AudioLowerVolume exec --no-startup-id $I3CONFIGDIR/volume.sh down 2 -np
+bindsym XF86AudioMute        exec --no-startup-id $I3CONFIGDIR/volume.sh mute
 
 bindsym $m+q kill
 bindsym $m+Shift+Ctrl+c reload

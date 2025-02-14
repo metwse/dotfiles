@@ -93,8 +93,8 @@ if ! shopt -oq posix; then
 fi
 
 
-alias vim="nvim"
-alias vi="nvim"
+alias vim=nvim
+alias vi=nvim
 
 export EDITOR=nvim
 export VISUAL=nvim
