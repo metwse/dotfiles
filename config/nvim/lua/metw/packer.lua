@@ -49,7 +49,7 @@ return require('packer').startup(function(use)
     use 'tpope/vim-fugitive'
 
 
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use { 'andweeb/presence.nvim' }
 
     use 'AckslD/nvim-neoclip.lua'
