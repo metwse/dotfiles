@@ -71,6 +71,10 @@ vim.keymap.set('n', '<leader>u', ':UndotreeToggle\n')
 
 
 
+vim.keymap.set('n', 'g?', vim.diagnostic.open_float)
+
+
+
 local lsp = require('lsp-zero')
 lsp.preset('recommended')
 lsp.setup()
@@ -87,3 +91,17 @@ end
 vim.keymap.set('n', '<leader><leader>y', ':Telescope neoclip unnamed\n')
 vim.keymap.set('n', '<leader>y*', ':Telescope neoclip star\n')
 vim.keymap.set('n', '<leader>y+', ':Telescope neoclip plus\n')
+
+vim.keymap.set('n', '<leader>(', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>)', '<cmd>lua vim.diagnostic.goto_next()<CR>', { noremap = true, silent = true })
+
+
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = '▎'
+  },
+  severity_sort = true,
+  float = {
+    source = "always", 
+  },
+})
