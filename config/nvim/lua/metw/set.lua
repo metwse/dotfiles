@@ -16,6 +16,15 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+    pattern = {"*.c", "*.h"},
+    callback = function()
+        vim.opt.tabstop = 8
+        vim.opt.shiftwidth = 8
+        vim.opt.expandtab = false
+    end
+})
+
 vim.opt.scrolloff = 8
 
 vim.g.mapleader = ' '
