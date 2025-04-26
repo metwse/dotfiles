@@ -18,7 +18,6 @@ return require('packer').startup(function(use)
     }
 
     use 'theprimeagen/harpoon'
-    use 'theprimeagen/vim-be-good'
 
     use 'mbbill/undotree'
 
@@ -50,7 +49,9 @@ return require('packer').startup(function(use)
 
 
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-    use { 'andweeb/presence.nvim' }
+    use 'nvim-treesitter/nvim-tree-docs'
 
     use 'AckslD/nvim-neoclip.lua'
+
+    use 'jasonccox/vim-wayland-clipboard'
 end)
