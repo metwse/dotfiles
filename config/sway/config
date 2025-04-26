@@ -15,7 +15,7 @@ set $m Mod4
 set $m2 Mod1
 
 exec --no-startup-id dunst -config ~/.config/dunst
-exec --no-startup-id greenclip daemon
+exec --no-startup-id wl-paste --watch cliphist store
 exec --no-startup-id xset s off
 exec --no-startup-id picom --experimental-backends -b
 exec --no-startup-id lxpolkit
@@ -203,7 +203,7 @@ bindsym $m+Shift+g workspace $ws2; exec --no-startup-id $BROWSER2
 bindsym $m+e exec $FILE_EXPLORER
 
 bindsym $m+d exec --no-startup-id $SWAYCONFIGDIR/rofi/kill.sh
-bindcode $m+60 exec --no-startup-id "rofi -modi 'Clipboard:greenclip print' -show Clipboard"
+bindcode $m+60 exec --no-startup-id cliphist list | rofi -dmenu | cliphist decode | wl-copy
 bindcode $m+59 exec --no-startup-id $SWAYCONFIGDIR/rofi/bluetooth.sh
 bindcode $m+48 exec --no-startup-id $SWAYCONFIGDIR/rofi/tdk.sh
 bindsym $m+t exec --no-startup-id $SWAYCONFIGDIR/rofi/todofi.sh
