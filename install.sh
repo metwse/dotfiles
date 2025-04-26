@@ -9,7 +9,7 @@ sudo apt install\
     golang nodejs\
     ripgrep todotxt-cli\
     sway swaylock swayidle waybar\
-    foot
+    foot wl-clipboard
 sudo npm install -g tree-sitter-cli
 
 
