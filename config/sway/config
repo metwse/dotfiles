@@ -27,14 +27,12 @@ exec --no-startup-id swaybg -i $WALLPAPER
 #{{{ screenshots
 exec --no-startup-id mkdir -p $SS_DIR
 
-bindsym Print exec --no-startup-id maim "$SS_DIR/$(date).png"
-bindsym $m+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "$SS_DIR/$(date).png"
-bindsym Shift+Print exec --no-startup-id maim --select "$SS_DIR/$(date).png"
+bindsym Print exec --no-startup-id grim "$SS_DIR/$(date).png"
+bindsym Shift+Print exec --no-startup-id grim -g "$(slurp)" "$SS_DIR/$(date).png"
 
 # clipboard
-bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
-bindsym Ctrl+$m+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
-bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+bindsym Ctrl+Print exec --no-startup-id grim - | wl-copy
+bindsym Ctrl+Shift+Print exec --no-startup-id grim -g "$(slurp)" - | wl-copy
 #}}}
 
 
