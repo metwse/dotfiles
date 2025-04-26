@@ -5,11 +5,12 @@ sudo apt update
 sudo apt install\
     curl apt-transport-https wget\
     lxpolkit picom i3 maim xclip feh rofi i3blocks xbacklight xss-lock\
-    neovim git tmux\
     golang nodejs\
+    neovim git tmux\
     ripgrep todotxt-cli\
     sway swaylock swayidle waybar\
-    foot wl-clipboard\
+    foot\
+    wl-clipboard cliphist\
     grim slurp\
     jq
 sudo npm install -g tree-sitter-cli
@@ -48,6 +49,6 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvi
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 
-# greenclip
-sudo wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip -O /usr/bin/greenclip
-sudo chmod +x /usr/bin/greenclip
+# greenclip -- commented out since i switched to wayland
+# sudo wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip -O /usr/bin/greenclip
+# sudo chmod +x /usr/bin/greenclip
