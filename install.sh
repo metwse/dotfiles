@@ -7,7 +7,9 @@ sudo apt install\
     lxpolkit picom i3 maim xclip feh rofi i3blocks xbacklight xss-lock\
     neovim git tmux\
     golang nodejs\
-    ripgrep todotxt-cli
+    ripgrep todotxt-cli\
+    sway swaylock swayidle waybar\
+    foot
 sudo npm install -g tree-sitter-cli
 
 
@@ -18,9 +20,15 @@ cp ./bashrc ~/.bashrc
 
 
 # fonts
-cd /tmp
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/NerdFontsSymbolsOnly.zip https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
-mkdir -p ~/.fonts/; mkdir -p ~/.config/fontconfig/conf.d/
+cd /tmp/
+
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/NerdFontsSymbolsOnly.zip \
+    https://github.com/Lokaltog/powerline/raw/develop/font/PowerlineSymbols.otf \
+    https://github.com/Lokaltog/powerline/raw/develop/font/10-powerline-symbols.conf
+
+mkdir -p ~/.fonts/
+mkdir -p ~/.config/fontconfig/conf.d/
+
 unzip NerdFontsSymbolsOnly.zip
 mv PowerlineSymbols.otf ~/.fonts/
 mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/

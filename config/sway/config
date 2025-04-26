@@ -1,0 +1,299 @@
+set $SS_DIR "$HOME/Pictures/ss"
+set $WALLPAPER "$HOME/Pictures/wallpaper.png"
+
+set $BROWSER "firefox"
+set $BROWSER2 "google-chrome --enable-features=WebUIDarkMode --force-dark-mode"
+
+set $TERMINAL "foot"
+set $FILE_EXPLORER "nemo"
+
+set $LOCK "swaylock -c 212121"
+set $SWAYCONFIGDIR "$HOME/.config/sway/"
+
+
+set $m Mod4
+set $m2 Mod1
+
+exec --no-startup-id dunst -config ~/.config/dunst
+exec --no-startup-id greenclip daemon
+exec --no-startup-id xset s off
+exec --no-startup-id picom --experimental-backends -b
+exec --no-startup-id lxpolkit
+
+exec --no-startup-id swaybg -i $WALLPAPER
+
+
+
+#{{{ screenshots
+exec --no-startup-id mkdir -p $SS_DIR
+
+bindsym Print exec --no-startup-id maim "$SS_DIR/$(date).png"
+bindsym $m+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "$SS_DIR/$(date).png"
+bindsym Shift+Print exec --no-startup-id maim --select "$SS_DIR/$(date).png"
+
+# clipboard
+bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+bindsym Ctrl+$m+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+#}}}
+
+
+
+#{{{ colors & customization
+# class                 border  backgr. text    indicator child_border
+client.focused          #1f1f1f #1f1f1f #ffffff #d61355   #1f1f1f
+client.focused_inactive #101010 #101010 #ffffff #414141   #101010
+client.unfocused        #101010 #101010 #ffffff #414141   #101010
+client.urgent           #D61355 #D61355 #ffffff #D61355   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+client.background       #ffffff
+
+font pango:Monospace 10
+
+bar {
+    status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks
+    tray_output none
+    position top
+
+    font pango:Monospace 10
+    separator_symbol " "
+    workspace_min_width 30
+    colors {
+        background #111111f0
+        statusline #fffffff0
+        separator #aaaaaaf0
+
+        #class             border  bg      text
+        focused_workspace  #537FE7 #537FE7 #ffffff
+        active_workspace   #444444 #444444 #ffffff
+        inactive_workspace #222222 #222222 #888888
+        urgent_workspace   #D61355 #D61355 #ffffff
+        binding_mode       #D61355 #D61355 #ffffff
+    }
+}
+#}}}
+
+
+
+#{{{ sys
+exec --no-startup-id /usr/libexec/gsd-xsettings
+
+# Some variables need to be exported to systemd and/or dbus activation
+# environments so tools that rely on them work properly. The essential ones
+# are: WAYLAND_DISPLAY, DISPLAY (if XWayland is used), XDG_CURRENT_DESKTOP,
+# plus Sway's: SWAYSOCK, I3SOCK, XCURSOR_SIZE, XCURSOR_THEME.
+exec systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
+exec dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
+
+# The combination of xss-lock, nm-applet and pactl is a popular choice, so
+# they are included here as an example. Modify as you see fit.
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id swayidle -w before-sleep $LOCK lock $LOCK
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id $SWAYCONFIGDIR/volume.sh up 2 -np
+bindsym XF86AudioLowerVolume exec --no-startup-id $SWAYCONFIGDIR/volume.sh down 2 -np
+bindsym XF86AudioMute        exec --no-startup-id $SWAYCONFIGDIR/volume.sh mute
+
+bindsym $m+q kill
+bindsym $m+Shift+Ctrl+c reload
+bindsym $m+Shift+Ctrl+r restart
+bindsym $m+Shift+Ctrl+e exit
+bindsym $m+Shift+Ctrl+l exec --no-startup-id $LOCK
+bindsym $m+Shift+Ctrl+s exec --no-startup-id systemctl suspend
+#}}}
+
+
+
+#{{{ moves & tilting
+# move focused window
+bindsym $m2+h focus left
+bindsym $m2+j focus down
+bindsym $m2+k focus up
+bindsym $m2+l focus right
+
+# move window
+bindsym $m2+Shift+h move left
+bindsym $m2+Shift+j move down
+bindsym $m2+Shift+k move up
+bindsym $m2+Shift+l move right
+
+# enter fullscreen mode for the focused container
+bindsym $m+f fullscreen toggle
+floating_modifier $m
+popup_during_fullscreen smart
+bindsym $m+b border toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $m+Ctrl+w layout tabbed
+bindsym $m+Ctrl+e layout toggle split
+bindsym $m+Ctrl+h split h
+bindsym $m+Ctrl+v split v
+
+# toggle tiling / floating
+bindsym $m+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $m+Shift+space focus mode_toggle
+
+# focus the parent container
+bindsym $m+a focus parent
+bindsym $m+s focus child
+#}}}
+
+
+
+#{{{ workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+
+bindsym KP_End workspace $ws1
+bindsym Shift+KP_End workspace $ws1; exec --no-startup-id $TERMINAL
+bindsym KP_Down workspace $ws2
+bindsym Shift+KP_Down workspace $ws2; exec --no-startup-id $BROWSER
+bindsym KP_Next workspace $ws3
+bindsym Shift+KP_Next workspace $ws3; exec --no-startup-id discord
+bindsym KP_Left workspace $ws4
+bindsym KP_Begin workspace $ws5
+bindsym KP_Right workspace $ws6
+bindsym KP_Home workspace $ws7
+bindsym KP_Up workspace $ws8
+bindsym KP_Prior workspace $ws9
+
+bindsym KP_Subtract move scratchpad
+bindsym KP_Add scratchpad show
+bindsym $m+n move scratchpad
+bindsym $m+m scratchpad show
+
+# switch to workspace
+bindsym $m+j workspace $ws1
+bindsym $m+k workspace $ws2
+bindsym $m+l workspace $ws3
+bindcode $m+47 workspace $ws4
+bindsym $m+u workspace $ws5
+bindsym $m+i workspace $ws6
+bindsym $m+o workspace $ws7
+bindsym $m+p workspace $ws8
+
+# move focused container to workspace
+bindsym $m+Shift+j move container to workspace $ws1
+bindsym $m+Shift+k move container to workspace $ws2
+bindsym $m+Shift+l move container to workspace $ws3
+bindcode $m+Shift+47 move container to workspace $ws4
+bindsym $m+Shift+u move container to workspace $ws5
+bindsym $m+Shift+i move container to workspace $ws6
+bindsym $m+Shift+o move container to workspace $ws7
+bindsym $m+Shift+p move container to workspace $ws8
+
+# launch app
+bindsym $m+Return workspace $ws1; exec --no-startup-id $TERMINAL
+bindsym $m+g workspace $ws2; exec --no-startup-id $BROWSER
+bindsym $m+Shift+g workspace $ws2; exec --no-startup-id $BROWSER2
+bindsym $m+e exec $FILE_EXPLORER
+
+bindsym $m+d exec --no-startup-id $SWAYCONFIGDIR/rofi/kill.sh
+bindcode $m+60 exec --no-startup-id "rofi -modi 'Clipboard:greenclip print' -show Clipboard"
+bindcode $m+59 exec --no-startup-id $SWAYCONFIGDIR/rofi/bluetooth.sh
+bindcode $m+48 exec --no-startup-id $SWAYCONFIGDIR/rofi/tdk.sh
+bindsym $m+t exec --no-startup-id $SWAYCONFIGDIR/rofi/todofi.sh
+# bindcode $m+40 exec --no-startup-id i3-dmenu-desktop
+# bindsym $m+d exec --no-startup-id dmenu_run
+#}}}
+
+
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
+
+    bindsym 1 resize set width 640 px height 360 px
+    bindsym 2 resize set width 848 px height 480 px
+    bindsym 3 resize set width 960 px height 540 px
+    bindsym 4 resize set width 1280 px height 720 px
+    bindsym q resize set width 360 px height 680 px
+    bindsym w resize set width 480 px height 848 px
+    bindsym e resize set width 540 px height 960 px
+    bindsym r resize set width 720 px height 1280 px
+
+    bindsym Shift+h resize shrink width 100 px or 100 ppt
+    bindsym Shift+j resize grow height 100 px or 100 ppt
+    bindsym Shift+k resize shrink height 100 px or 100 ppt
+    bindsym Shift+l resize grow width 100 px or 100 ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $m+r mode "resize"
+
+# move window (you can also use the mouse for that)
+mode "move" {
+    bindsym h move left
+    bindsym j move down
+    bindsym k move up
+    bindsym l move right
+
+    bindsym c move position center
+
+    bindsym q move position 0 px 0 px
+    bindsym w move position 960 px 0 px
+    bindsym e move position 0 px 540 px
+    bindsym r move position 960 px 540 px
+
+    bindsym 1 move position 0 px 0 px
+    bindsym 2 move position 640 px 0 px
+    bindsym 3 move position 1280 px 0 px
+    bindsym 4 move position 0 px 360 px
+    bindsym 5 move position 640 px 360 px
+    bindsym 6 move position 1280 px 360 px
+    bindsym 7 move position 0 px 720 px
+    bindsym 8 move position 640 px 720 px
+    bindsym 9 move position 1280 px 720 px
+
+    bindsym Shift+h move left 100 px
+    bindsym Shift+j move down 100 px
+    bindsym Shift+k move up 100 px
+    bindsym Shift+l move right 100 px
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $m+h mode "move"
+
+
+
+
+assign [app_id="(i?).*terminal.*"] $ws1
+assign [app_id="Google-chrome"] $ws2
+assign [app_id="firefox"] $ws2
+assign [app_id="discord"] $ws2
+
+for_window [app_id="(i?).*terminal.*"] border none
+for_window [app_id="foot"] border none
+
+for_window [app_id="Google-chrome"] layout tabbed; border none
+for_window [app_id="firefox"] layout tabbed; border none
+for_window [app_id="discord"] fullscreen enable; border none
+
+for_window [app_id="Nautilus"] floating enable
+for_window [app_id="nemo"] floating enable
+
+for_window [app_id="Gpick"] floating enable
+
+exec --no-startup-id $TERMINAL
+exec --no-startup-id $BROWSER
