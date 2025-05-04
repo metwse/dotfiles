@@ -87,9 +87,11 @@ exec dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESK
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id swayidle -w before-sleep $LOCK lock $LOCK
+# swayidle grabs a logind suspend inhibit lock and will use swaylock to lock
+# the screen before suspend.
+exec --no-startup-id swayidle -w \
+    lock $LOCK \
+    before-sleep $LOCK
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
