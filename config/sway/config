@@ -14,25 +14,25 @@ set $SWAYCONFIGDIR "$HOME/.config/sway/"
 set $m Mod4
 set $m2 Mod1
 
-exec --no-startup-id dunst -config ~/.config/dunst
-exec --no-startup-id wl-paste --watch cliphist store
-exec --no-startup-id xset s off
-exec --no-startup-id picom --experimental-backends -b
-exec --no-startup-id lxpolkit
+exec dunst -config ~/.config/dunst
+exec wl-paste --watch cliphist store
+exec xset s off
+exec picom --experimental-backends -b
+exec lxpolkit
 
-exec --no-startup-id swaybg -i $WALLPAPER
+exec swaybg -i $WALLPAPER
 
 
 
 #{{{ screenshots
-exec --no-startup-id mkdir -p $SS_DIR
+exec mkdir -p $SS_DIR
 
-bindsym Print exec --no-startup-id grim "$SS_DIR/$(date).png"
-bindsym Shift+Print exec --no-startup-id grim -g "$(slurp)" "$SS_DIR/$(date).png"
+bindsym Print exec grim "$SS_DIR/$(date).png"
+bindsym Shift+Print exec grim -g "$(slurp)" "$SS_DIR/$(date).png"
 
 # clipboard
-bindsym Ctrl+Print exec --no-startup-id grim - | wl-copy
-bindsym Ctrl+Shift+Print exec --no-startup-id grim -g "$(slurp)" - | wl-copy
+bindsym Ctrl+Print exec grim - | wl-copy
+bindsym Ctrl+Shift+Print exec grim -g "$(slurp)" - | wl-copy
 #}}}
 
 
@@ -75,7 +75,7 @@ bar {
 
 
 #{{{ sys
-exec --no-startup-id /usr/libexec/gsd-xsettings
+exec /usr/libexec/gsd-xsettings
 
 # Some variables need to be exported to systemd and/or dbus activation
 # environments so tools that rely on them work properly. The essential ones
@@ -89,24 +89,24 @@ exec dbus-update-activation-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESK
 
 # swayidle grabs a logind suspend inhibit lock and will use swaylock to lock
 # the screen before suspend.
-exec --no-startup-id swayidle -w \
+exec swayidle -w \
     lock $LOCK \
     before-sleep $LOCK
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+exec nm-applet
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id $SWAYCONFIGDIR/volume.sh up 2 -np
-bindsym XF86AudioLowerVolume exec --no-startup-id $SWAYCONFIGDIR/volume.sh down 2 -np
-bindsym XF86AudioMute        exec --no-startup-id $SWAYCONFIGDIR/volume.sh mute
+bindsym XF86AudioRaiseVolume exec $SWAYCONFIGDIR/volume.sh up 2 -np
+bindsym XF86AudioLowerVolume exec $SWAYCONFIGDIR/volume.sh down 2 -np
+bindsym XF86AudioMute        exec $SWAYCONFIGDIR/volume.sh mute
 
 bindsym $m+q kill
 bindsym $m+Shift+Ctrl+c reload
 bindsym $m+Shift+Ctrl+r restart
 bindsym $m+Shift+Ctrl+e exit
-bindsym $m+Shift+Ctrl+l exec --no-startup-id $LOCK
-bindsym $m+Shift+Ctrl+s exec --no-startup-id systemctl suspend
+bindsym $m+Shift+Ctrl+l exec $LOCK
+bindsym $m+Shift+Ctrl+s exec systemctl suspend
 #}}}
 
 
@@ -161,11 +161,11 @@ set $ws8 "8"
 set $ws9 "9"
 
 bindsym KP_End workspace $ws1
-bindsym Shift+KP_End workspace $ws1; exec --no-startup-id $TERMINAL
+bindsym Shift+KP_End workspace $ws1; exec $TERMINAL
 bindsym KP_Down workspace $ws2
-bindsym Shift+KP_Down workspace $ws2; exec --no-startup-id $BROWSER
+bindsym Shift+KP_Down workspace $ws2; exec $BROWSER
 bindsym KP_Next workspace $ws3
-bindsym Shift+KP_Next workspace $ws3; exec --no-startup-id discord
+bindsym Shift+KP_Next workspace $ws3; exec discord
 bindsym KP_Left workspace $ws4
 bindsym KP_Begin workspace $ws5
 bindsym KP_Right workspace $ws6
@@ -199,18 +199,18 @@ bindsym $m+Shift+o move container to workspace $ws7
 bindsym $m+Shift+p move container to workspace $ws8
 
 # launch app
-bindsym $m+Return workspace $ws1; exec --no-startup-id $TERMINAL
-bindsym $m+g workspace $ws2; exec --no-startup-id $BROWSER
-bindsym $m+Shift+g workspace $ws2; exec --no-startup-id $BROWSER2
+bindsym $m+Return workspace $ws1; exec $TERMINAL
+bindsym $m+g workspace $ws2; exec $BROWSER
+bindsym $m+Shift+g workspace $ws2; exec $BROWSER2
 bindsym $m+e exec $FILE_EXPLORER
 
-bindsym $m+d exec --no-startup-id $SWAYCONFIGDIR/rofi/kill.sh
-bindcode $m+60 exec --no-startup-id cliphist list | rofi -dmenu | cliphist decode | wl-copy
-bindcode $m+59 exec --no-startup-id $SWAYCONFIGDIR/rofi/bluetooth.sh
-bindcode $m+48 exec --no-startup-id $SWAYCONFIGDIR/rofi/tdk.sh
-bindsym $m+t exec --no-startup-id $SWAYCONFIGDIR/rofi/todofi.sh
-# bindcode $m+40 exec --no-startup-id i3-dmenu-desktop
-# bindsym $m+d exec --no-startup-id dmenu_run
+bindsym $m+d exec $SWAYCONFIGDIR/rofi/kill.sh
+bindcode $m+60 exec cliphist list | rofi -dmenu | cliphist decode | wl-copy
+bindcode $m+59 exec $SWAYCONFIGDIR/rofi/bluetooth.sh
+bindcode $m+48 exec $SWAYCONFIGDIR/rofi/tdk.sh
+bindsym $m+t exec $SWAYCONFIGDIR/rofi/todofi.sh
+# bindcode $m+40 exec i3-dmenu-desktop
+# bindsym $m+d exec dmenu_run
 #}}}
 
 
@@ -295,5 +295,5 @@ for_window [app_id="nemo"] floating enable
 
 for_window [app_id="Gpick"] floating enable
 
-exec --no-startup-id $TERMINAL
-exec --no-startup-id $BROWSER
+exec $TERMINAL
+exec $BROWSER
