@@ -17,13 +17,9 @@ sudo npm install -g tree-sitter-cli
 
 
 # link config
-ln -s ~/.w/config/* ~/.config
-
-rm ~/.tmux.conf
-ln -s ~/.w/tmux.conf ~/.tmux.conf
-
-rm ~/.bashrc
-ln -s ~/.w/bashrc ~/.bashrc
+ln -sf ~/.w/config/* ~/.config
+ln -sf ~/.w/tmux.conf ~/.tmux.conf
+ln -sf ~/.w/bashrc ~/.bashrc
 
 
 # fonts
@@ -55,3 +51,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # greenclip -- commented out since i switched to wayland
 # sudo wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip -O /usr/bin/greenclip
 # sudo chmod +x /usr/bin/greenclip
+
+# keyboard layout
+cd ~/.w/
+sudo ln -f xkb /usr/share/X11/xkb/symbols/us
