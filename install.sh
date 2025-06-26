@@ -1,8 +1,8 @@
 # adding repos
-sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo add-apt-repository -y ppa:neovim-ppa/unstable
 sudo apt update
 
-sudo apt install\
+sudo apt install -y\
     curl apt-transport-https wget\
     lxpolkit picom i3 maim xclip feh rofi i3blocks xbacklight xss-lock\
     golang nodejs\
@@ -16,9 +16,13 @@ sudo apt install\
 sudo npm install -g tree-sitter-cli
 
 
-# config
+# link config
 ln -s ~/.w/config/* ~/.config
+
+rm ~/.tmux.conf
 ln -s ~/.w/tmux.conf ~/.tmux.conf
+
+rm ~/.bashrc
 ln -s ~/.w/bashrc ~/.bashrc
 
 
