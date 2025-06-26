@@ -5,7 +5,7 @@ sudo apt update
 sudo apt install -y\
     curl apt-transport-https wget\
     lxpolkit picom i3 maim xclip feh rofi i3blocks xbacklight xss-lock\
-    golang nodejs\
+    golang nodejs python3-venv\
     neovim git tmux\
     ripgrep todotxt-cli\
     sway swaylock swayidle waybar\
@@ -51,6 +51,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # greenclip -- commented out since i switched to wayland
 # sudo wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip -O /usr/bin/greenclip
 # sudo chmod +x /usr/bin/greenclip
+
 
 # keyboard layout
 cd ~/.w/
