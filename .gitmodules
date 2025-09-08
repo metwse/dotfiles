@@ -13,6 +13,6 @@
 [submodule "config/metw-dotfiles-modules/i3/i3blocks-contrib"]
 	path = config/metw-dotfiles-modules/i3/i3blocks-contrib
 	url = https://github.com/vivien/i3blocks-contrib
-[submodule "config/neovimrc"]
+[submodule "neovimrc"]
 	path = config/nvim
 	url = https://github.com/metwse/neovimrc
