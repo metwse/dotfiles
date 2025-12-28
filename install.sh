@@ -10,7 +10,7 @@ packages=(
     wl-clipboard cliphist grim slurp  # Wayland utilities
     foot  # Wayland terminal
     neovim git tmux  # core dev tools
-    ripgrep todotxt-cli  # CLI tools
+    ripgrep todotxt-cli fzf  # CLI tools
     golang rustup python3-venv  # languages
     jq yq  # JSON/YAML utilities
     clang clangd  # C
@@ -23,7 +23,8 @@ sudo apt install -y "${packages[@]}"
 # link config
 ln -sf ~/.w/config/* ~/.config
 ln -sf ~/.w/tmux.conf ~/.tmux.conf
-ln -sf ~/.w/bashrc ~/.bashrc
+
+echo "source ~/.w/bashrc" >> ~/.bashrc
 
 
 # install node & npm
