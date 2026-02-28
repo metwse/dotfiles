@@ -10,7 +10,7 @@ packages=(
     wl-clipboard cliphist grim slurp  # Wayland utilities
     foot  # Wayland terminal
     neovim git tmux  # core dev tools
-    ripgrep todotxt-cli fzf  # CLI tools
+    ripgrep todotxt-cli fzf unzip  # CLI tools
     golang rustup python3-venv  # languages
     jq yq  # JSON/YAML utilities
     clang clangd  # C
