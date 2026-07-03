@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 dev_packages=(
     apt-transport-https wget curl  # networking
@@ -18,29 +19,31 @@ desktop_packages=(
     manpages manpages-dev manpages-posix manpages-posix-dev  # manpages
 )
 
-if [ "$1" == 'dev' ]; then
-    packages="${dev_packages[@]}"
+if [ "${1:-}" == 'dev' ]; then
+    packages=("${dev_packages[@]}")
 else
-    packages="${dev_packages[@]} ${desktop_packages[@]}"
+    packages=("${dev_packages[@]}" "${desktop_packages[@]}")
 fi
 
 sudo apt update
-sudo apt install -y $packages
+sudo apt install -y --no-install-recommends "${packages[@]}"
 
+
+NVIM_VERSION="v0.12.3"
+NVM_VERSION="v0.40.3"
+NODE_VERSION="v24.18.0"
+TPM_VERSION="v3.1.0"
 
 # neovim
-wget https://github.com/neovim/neovim/releases/download/v0.12.3/nvim-linux-x86_64.tar.gz \
+wget https://github.com/neovim/neovim/releases/download/$NVIM_VERSION/nvim-linux-x86_64.tar.gz \
     -O /tmp/nvim.tar.gz
-
 tar -xzf /tmp/nvim.tar.gz -C /tmp/
-
 sudo mv /tmp/nvim-linux-x86_64/ /opt/
-
-sudo ln -s /opt/nvim-linux-x86_64/bin/nvim /bin/nvim
-
+sudo ln -s /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin/nvim
 
 # install node & npm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${NVM_VERSION}/install.sh |
+    bash
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] &&
     printf %s "${HOME}/.nvm" ||
@@ -48,17 +51,19 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] &&
 
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-nvm install --lts
-nvm use --lts
+nvm install $NODE_VERSION
+nvm use $NODE_VERSION
 
 npm install -g tree-sitter-cli
 
-
-# tmux
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+# tmux package manager
+mkdir -p ~/.tmux/plugins/
+git clone --branch $TPM_VERSION \
+    https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 
 # link config
+mkdir -p ~/.conig/
 ln -sf ~/.w/config/* ~/.config
 ln -sf ~/.w/tmux.conf ~/.tmux.conf
 
@@ -95,8 +100,8 @@ sudo wget \
 
 # greenclip
 sudo wget https://github.com/erebe/greenclip/releases/download/v4.2/greenclip \
-    -O /usr/bin/greenclip
-sudo chmod +x /usr/bin/greenclip
+    -O /usr/local/bin/greenclip
+sudo chmod +x /usr/local/bin/greenclip
 
 
 # keyboard layout

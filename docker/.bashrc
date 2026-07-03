@@ -73,3 +73,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
+export LANG='en_US.UTF-8'
+export LANGUAGE='en_US'
+export COLORTERM='truecolor'
