@@ -1,23 +1,61 @@
-sudo add-apt-repository -y ppa:neovim-ppa/unstable  # Daily builds of nvim
+#!/bin/bash
 
-sudo apt update
-
-packages=(
+dev_packages=(
     apt-transport-https wget curl  # networking
+    git tmux  # core dev tools
+    ripgrep todotxt-cli fzf unzip  # CLI tools
+    golang rustup python3-venv  # languages
+    jq yq  # JSON/YAML utilities
+    clang clangd  # C
+)
+
+desktop_packages=(
     i3 lxpolkit picom xbacklight xss-lock  # window manager (X11)
     sway swaylock swayidle waybar  # window manager (Wayland)
     maim xclip feh i3blocks  # X11 utilities
     wl-clipboard cliphist grim slurp  # Wayland utilities
     foot  # Wayland terminal
-    neovim git tmux  # core dev tools
-    ripgrep todotxt-cli fzf unzip  # CLI tools
-    golang rustup python3-venv  # languages
-    jq yq  # JSON/YAML utilities
-    clang clangd  # C
     manpages manpages-dev manpages-posix manpages-posix-dev  # manpages
 )
 
-sudo apt install -y "${packages[@]}"
+if [ "$1" == 'dev' ]; then
+    packages="${dev_packages[@]}"
+else
+    packages="${dev_packages[@]} ${desktop_packages[@]}"
+fi
+
+sudo apt update
+sudo apt install -y $packages
+
+
+# neovim
+wget https://github.com/neovim/neovim/releases/download/v0.12.3/nvim-linux-x86_64.tar.gz \
+    -O /tmp/nvim.tar.gz
+
+tar -xzf /tmp/nvim.tar.gz -C /tmp/
+
+sudo mv /tmp/nvim-linux-x86_64/ /opt/
+
+sudo ln -s /opt/nvim-linux-x86_64/bin/nvim /bin/nvim
+
+
+# install node & npm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] &&
+    printf %s "${HOME}/.nvm" ||
+    printf %s "${XDG_CONFIG_HOME}/nvm")"
+
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+nvm install --lts
+nvm use --lts
+
+npm install -g tree-sitter-cli
+
+
+# tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 
 # link config
@@ -27,16 +65,8 @@ ln -sf ~/.w/tmux.conf ~/.tmux.conf
 echo "source ~/.w/bashrc" >> ~/.bashrc
 
 
-# install node & npm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
-
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-nvm install --lts
-nvm use --lts
-
-npm install -g tree-sitter-cli
+# Development environment setup ends here.
+[ "$1" == 'dev' ] && exit 0
 
 
 # fonts
@@ -61,10 +91,6 @@ fc-cache -vf ~/.fonts
 sudo wget \
     https://github.com/metwse/rofi-tdk.sh/releases/latest/download/rofi-tdk.tar.gz \
     -O /var/rofi-tdk.tar.gz
-
-
-# tmux
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 
 # greenclip
