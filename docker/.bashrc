@@ -77,3 +77,5 @@ alias l='ls -CF'
 export LANG='en_US.UTF-8'
 export LANGUAGE='en_US'
 export COLORTERM='truecolor'
+
+export NVIM_ENABLE_PLUGINS=1

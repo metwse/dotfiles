@@ -19,10 +19,10 @@ docker build -t metw .
 ```
 to build the image,
 ```sh
-docker run --name metw metw sleep infinity
+docker run --name container-name -d metw sleep infinity
 ```
 to start a container, and
 ```sh
-docker exec -e TERM="$TERM" -u metw -it metw bash
+docker exec -e TERM="$TERM" -u metw -it container-name bash
 ```
 to connect the shell of it.

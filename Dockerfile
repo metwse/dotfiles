@@ -29,4 +29,8 @@ RUN rustup toolchain install stable nightly --profile minimal && \
     rustup default stable && \
     rustup component add rust-analyzer --toolchain stable
 
+# Install Neovim & tmux plugins
+RUN NVIM_ENABLE_PLUGINS=1 nvim --headless '+Lazy! sync' +qa
+RUN ~/.tmux/plugins/tpm/bindings/install_plugins; exit 0
+
 ENTRYPOINT ["/usr/bin/tini", "--"]
