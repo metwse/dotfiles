@@ -63,7 +63,7 @@ git clone --branch $TPM_VERSION \
 
 
 # link config
-mkdir -p ~/.conig/
+mkdir -p ~/.config/
 ln -sf ~/.w/config/* ~/.config
 ln -sf ~/.w/tmux.conf ~/.tmux.conf
 
