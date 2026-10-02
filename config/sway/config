@@ -59,9 +59,9 @@ exec swayidle -w lock $LOCK before-sleep $LOCK
 for_window [app_id="(i?).*terminal.*"] border none
 for_window [app_id="foot"] border none
 
-for_window [app_id="Google-chrome"] layout tabbed; border none
-for_window [app_id="firefox"] layout tabbed; border none
-for_window [app_id="discord"] fullscreen enable; border none
+for_window [app_id="Google-chrome"] layout tabbed, border none
+for_window [app_id="firefox"] layout tabbed, border none
+for_window [app_id="discord"] fullscreen enable, border none
 
 for_window [app_id="Nautilus"] floating enable
 for_window [app_id="nemo"] floating enable
