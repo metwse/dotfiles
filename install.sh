@@ -1,9 +1,4 @@
 #!/bin/bash
-cd scripts/
-
-./install-packages.sh
-./install-tmp.sh
-./wm.sh
 
 
 # link config
@@ -12,3 +7,11 @@ ln -sf $PWD/config/* ~/.config
 ln -sf $PWD/tmux.conf ~/.tmux.conf
 
 echo "source $PWD/bashrc" >> ~/.bashrc
+
+
+# install the packages
+cd scripts/
+
+./install-packages.sh
+./install-tmp.sh
+./wm.sh
