@@ -1,6 +1,11 @@
 #!/bin/bash
 source ./config.sh
 
+
+# keyboard layout
+sudo ln -f ../xkb /usr/share/X11/xkb/symbols/us
+
+
 # fonts
 cd /tmp/
 
@@ -29,8 +34,3 @@ sudo wget \
 sudo wget https://github.com/erebe/greenclip/releases/download/$GREENCLIP_VERSION/greenclip \
     -O /usr/local/bin/greenclip
 sudo chmod +x /usr/local/bin/greenclip
-
-
-# keyboard layout
-cd ~/.w/
-sudo ln -f xkb /usr/share/X11/xkb/symbols/us
