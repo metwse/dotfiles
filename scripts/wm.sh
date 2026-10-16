@@ -3,7 +3,7 @@ source ./config.sh
 
 
 # keyboard layout
-sudo ln -f ../xkb /usr/share/X11/xkb/symbols/us
+sudo cp ../xkb /usr/share/X11/xkb/symbols/us
 
 
 # fonts

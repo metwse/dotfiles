@@ -13,5 +13,5 @@ echo "source $PWD/bashrc" >> ~/.bashrc
 cd scripts/
 
 ./install-packages.sh
-./install-tmp.sh
+./install-tpm.sh
 ./wm.sh
