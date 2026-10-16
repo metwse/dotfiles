@@ -11,7 +11,7 @@ export DEV_PACKAGES=(
     manpages manpages-dev  # manpages
 )
 export DESKTOP_PACKAGES=(
-    i3 lxpolkit picom xbacklight xss-lock  # window manager (X11)
+    i3 lxpolkit picom xbacklight xss-lock i3lock rofi  # window manager (X11)
     sway swaylock swayidle waybar  # window manager (Wayland)
     maim xclip feh i3blocks  # X11 utilities
     wl-clipboard cliphist grim slurp  # Wayland utilities
