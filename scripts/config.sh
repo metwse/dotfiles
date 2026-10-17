@@ -16,6 +16,7 @@ export DESKTOP_PACKAGES=(
     maim xclip feh i3blocks  # X11 utilities
     wl-clipboard cliphist grim slurp  # Wayland utilities
     foot  # Wayland terminal
+    neovim dunst
 )
 export NODE_PACKAGES=(
     tree-sitter-cli

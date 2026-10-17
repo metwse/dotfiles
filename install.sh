@@ -15,6 +15,3 @@ cd scripts/
 ./install-packages.sh
 ./install-tpm.sh
 ./wm.sh
-
-
-sudo apt install neovim
