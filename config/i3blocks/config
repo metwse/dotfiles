@@ -15,7 +15,7 @@ interval=1
 min_width=CPU 100.00%
 
 [battery]
-#command=$SCRIPT_DIR/battery/battery
+command=$SCRIPT_DIR/battery2/battery2
 label=BAT
 interval=3
 
