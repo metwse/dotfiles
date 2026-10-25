@@ -10,6 +10,9 @@ git clone --recurse-submodules https://github.com/metwse/dotfiles ~/.w && \
     ./install.sh
 ```
 
+I use Debian 13 with Gnome & Cinnamon installed. This configuration also tested
+on Linux Mint 22.
+
 
 ## Dockerized Setup
 

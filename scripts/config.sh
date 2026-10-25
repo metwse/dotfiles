@@ -17,6 +17,7 @@ export DESKTOP_PACKAGES=(
     wl-clipboard cliphist grim slurp  # Wayland utilities
     foot  # Wayland terminal
     neovim
+    xtitle  # set terminal title
     libnotify-bin dunst  # notifications
     acpi  # battery info
 )
