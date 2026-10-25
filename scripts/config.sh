@@ -8,6 +8,7 @@ export DEV_PACKAGES=(
     golang rustup python3-venv  # languages
     jq yq  # JSON/YAML utilities
     clang clangd valgrind build-essential pkg-config  # build tools
+    xtitle  # set terminal title
     manpages manpages-dev  # manpages
 )
 export DESKTOP_PACKAGES=(
@@ -17,7 +18,6 @@ export DESKTOP_PACKAGES=(
     wl-clipboard cliphist grim slurp  # Wayland utilities
     foot  # Wayland terminal
     neovim
-    xtitle  # set terminal title
     libnotify-bin dunst  # notifications
     acpi  # battery info
 )

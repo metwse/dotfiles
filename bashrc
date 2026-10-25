@@ -22,19 +22,26 @@ alias vi=nvim
 FZF_THEME='--ansi --layout=reverse --no-separator --no-info
            --color=prompt:bold:bright-green,pointer:bold:bright-red'
 
+set-title() {
+    [[ -n "$METW_CONTAINER_NAME" ]] &&
+        title="($METW_CONTAINER_NAME) $1" || title="$1";
+
+    xtitle -qt "$title"
+}
+
 connect-container() {
-    sudo docker exec -e TERM=$TERM -it "$1" bash
+    sudo docker exec -e METW_CONTAINER_NAME="$1" -e TERM=$TERM -it "$1" bash
     if [[ "$?" != '0' ]]; then
         sleep 1
     fi
 }
 
 docker-container-selection() {
-    xtitle -qt 'pending authorization...'
+    set-title 'pending authorization...'
     sudo -v
 
     while true; do
-        xtitle -qt 'docker container selection'
+        set-title 'docker container selection'
         { read -r key; read -r sel; } < <(
             sudo docker ps --format "$(tput setaf 1 bold){{.Names}}:$(tput sgr0) {{.Image}} (created {{.RunningFor}})" |
             fzf --expect='ctrl-y,ctrl-r,ctrl-j,ctrl-d,enter' --prompt='docker: ' \
@@ -44,14 +51,14 @@ docker-container-selection() {
         if [[ "$key" == 'ctrl-r' ]]; then
             :  # noop, ctrl-r for refreshing the container list
         elif [[ "$key" == 'ctrl-d' ]]; then
-            exit 0
+            exit 0  # full exit
         elif [[ "$key" == 'ctrl-j' ]]; then
-            tmux-session-selection
+            tmux-session-selection  # mode switch
             return
         elif [[ -n "$key$sel" ]]; then
             if [[ "$key" == 'ctrl-y' || "$key" == 'enter' ]]; then
                 container_name="${sel%%:*}"
-                xtitle -qt "container $container_name"
+                set-title "container $container_name"
                 connect-container "$container_name"
             fi
         else
@@ -65,38 +72,44 @@ tmux-session-selection() {
         return
     fi
 
+    [[ -n "$METW_CONTAINER_NAME" ]] &&
+        prompt="($METW_CONTAINER_NAME) tmux: " || prompt="tmux: ";
+
     while true; do
-        xtitle -qt 'tmux session selection'
+        set-title 'tmux session selection'
         { read -r query; read -r key; read -r sel; } < <(
             tmux ls 2>/dev/null |
             sed "s/^[^:]*:/$(tput setaf 1 bold)&$(tput sgr0)/" |
-            fzf --expect='ctrl-y,ctrl-r,ctrl-j,ctrl-d,enter' --prompt='tmux: ' \
+            fzf --expect='ctrl-y,ctrl-r,ctrl-j,ctrl-d,enter' --prompt="$prompt" \
                 --print-query $FZF_THEME
         )
 
         if [[ "$key" == 'ctrl-r' ]]; then
             :  # noop, ctrl-r for refreshing the sessions list
         elif [[ "$key" == 'ctrl-d' ]]; then
-            exit 0
+            exit 0  # full exit
         elif [[ "$key" == 'ctrl-j' ]]; then
-            docker-container-selection
-            return
+            # prevent container selection inside a container
+            if [[ -z "$METW_CONTAINER_NAME" ]]; then
+                docker-container-selection  # mode switch
+                return
+            fi
         elif [[ -n "$key$query$sel" ]]; then
             if [[ "$key" == 'ctrl-y' ]]; then
                 if [[ -z "$query" ]]; then
-                    xtitle -qt 'Terminal'
+                    set-title 'Terminal'
                     tmux new-session
                 else
-                    xtitle -qt "$query"
+                    set-title "$query"
                     tmux new-session -s "$query"
                 fi
             elif [[ "$key" == 'enter' && -z "$query$sel" ]]; then
-                xtitle -qt 'Terminal'
+                set-title 'Terminal'
                 tmux new-session
             else
                 session_name="${sel%%:*}"
                 : "${session_name:=$query}"
-                xtitle -qt "$session_name"
+                set-title "$session_name"
                 tmux new-session -A -s "$session_name"
             fi
         else
